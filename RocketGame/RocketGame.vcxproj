@@ -70,7 +70,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LibraryPath>$(ProjDir)x64;$(ProjDir)Engine/Debug;$(VC_IncludePath);$(WindowsSDK_IncludePath);$(WindowsSDK_LibraryPath)</LibraryPath>
+    <LibraryPath>$(ProjDir)Engine/Debug;$(VC_IncludePath);$(WindowsSDK_LibraryPath);$(WindowsSDK_LibraryPath_x64);$(VC_LibraryPath_VC_x64_OneCore);$(WindowsSdkDir)/Lib/10.0.16299.0/ucrt/x64</LibraryPath>
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
     <IncludePath>$(ProjectDir);$(ProjectDir)/../;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
   </PropertyGroup>
