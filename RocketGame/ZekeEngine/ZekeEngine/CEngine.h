@@ -32,23 +32,10 @@ namespace ZekeEngine {
 			}
 			return *instance;
 		}
-		static inline CEngine& Engine()
-		{
-			return CEngine::GetInstance();
-		}
+		
 		CGraphicsEngine& GetGraphicsEngine()
 		{
 			return m_graphicsEngine;
-		}
-		static inline CGraphicsEngine& GraphicsEngine() {
-			return Engine().GetGraphicsEngine();
-		}
-		static inline Camera& MainCamera() {
-			return GraphicsEngine().GetMainCamera();
-		}
-		static inline Camera& MainCamera2D()
-		{
-			return GraphicsEngine().Get2DCamera();
 		}
 	private:
 		/*
@@ -62,4 +49,18 @@ namespace ZekeEngine {
 		int							m_screenHeight = 0;				//スクリーンの高さ
 		CGraphicsEngine		m_graphicsEngine;					//グラフィックエンジン
 	};
+	static inline CEngine& Engine()
+	{
+		return CEngine::GetInstance();
+	}
+	static inline CGraphicsEngine& GraphicsEngine() {
+		return Engine().GetGraphicsEngine();
+	}
+	static inline Camera& MainCamera() {
+		return GraphicsEngine().GetMainCamera();
+	}
+	static inline Camera& MainCamera2D()
+	{
+		return GraphicsEngine().Get2DCamera();
+	}
 }

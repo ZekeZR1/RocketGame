@@ -18,18 +18,18 @@ int WINAPI wWinMain(
 	eParam.screenHeight = 720;
 	//eParam.screenHeight = 1080;
 
-	if (CEngine::Engine().Init(eParam)) {
+	if (Engine().Init(eParam)) {
 		/*initialize 3dCamera*/
-		CEngine::MainCamera().SetTarget({ 0.0f, 70.0f, 0.0f });
-		CEngine::MainCamera().SetNear(10.0f);
-		CEngine::MainCamera().SetFar(1000.0f);
-		CEngine::MainCamera().SetPosition({ 0.0f, 70.0f, 200.0f });
-		CEngine::MainCamera().SetUpdateProjMatrixFunc(Camera::enUpdateProjMatrixFunc_Perspective);
-		CEngine::MainCamera().Update();
+		MainCamera().SetTarget({ 0.0f, 70.0f, 0.0f });
+		MainCamera().SetNear(10.0f);
+		MainCamera().SetFar(1000.0f);
+		MainCamera().SetPosition({ 0.0f, 70.0f, 200.0f });
+		MainCamera().SetUpdateProjMatrixFunc(Camera::enUpdateProjMatrixFunc_Perspective);
+		MainCamera().Update();
 		//start main roop
-		CEngine::Engine().GameRoop();
+		Engine().GameRoop();
 	}
-	CEngine::Engine().Final();
+	Engine().Final();
 
 	return 0;
 }
