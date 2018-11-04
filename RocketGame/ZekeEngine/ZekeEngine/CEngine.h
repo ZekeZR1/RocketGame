@@ -40,6 +40,16 @@ namespace ZekeEngine {
 		{
 			return m_graphicsEngine;
 		}
+		static inline CGraphicsEngine& GraphicsEngine() {
+			return Engine().GetGraphicsEngine();
+		}
+		static inline Camera& MainCamera() {
+			return GraphicsEngine().GetMainCamera();
+		}
+		static inline Camera& MainCamera2D()
+		{
+			return GraphicsEngine().Get2DCamera();
+		}
 	private:
 		/*
 		ウィンドウ初期化

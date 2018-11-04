@@ -19,6 +19,18 @@
     <ClInclude Include="policy\Noncopyable.h">
       <Filter>Source\policy</Filter>
     </ClInclude>
+    <ClInclude Include="graphics\Camera.h">
+      <Filter>Source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="math\Vector.h">
+      <Filter>Source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\kMath.h">
+      <Filter>Source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\Matrix.h">
+      <Filter>Source\math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source">
@@ -30,6 +42,9 @@
     <Filter Include="Source\policy">
       <UniqueIdentifier>{8740828b-1245-4ed0-9a69-00a17228d450}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\math">
+      <UniqueIdentifier>{43590726-7d09-4ea2-939c-2aeeb29bfc97}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -40,6 +55,18 @@
     </ClCompile>
     <ClCompile Include="graphics\CGraphicsEngine.cpp">
       <Filter>Source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\Camera.cpp">
+      <Filter>Source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="math\Vector.cpp">
+      <Filter>Source\math</Filter>
+    </ClCompile>
+    <ClCompile Include="math\kMath.cpp">
+      <Filter>Source\math</Filter>
+    </ClCompile>
+    <ClCompile Include="math\Matrix.cpp">
+      <Filter>Source\math</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

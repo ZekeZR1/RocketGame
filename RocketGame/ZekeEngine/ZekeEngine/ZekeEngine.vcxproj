@@ -152,14 +152,22 @@
   <ItemGroup>
     <ClInclude Include="CEngine.h" />
     <ClInclude Include="EngineStruct.h" />
+    <ClInclude Include="graphics\Camera.h" />
     <ClInclude Include="graphics\CGraphicsEngine.h" />
+    <ClInclude Include="math\kMath.h" />
+    <ClInclude Include="math\Matrix.h" />
+    <ClInclude Include="math\Vector.h" />
     <ClInclude Include="policy\Noncopyable.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CEngine.cpp" />
+    <ClCompile Include="graphics\Camera.cpp" />
     <ClCompile Include="graphics\CGraphicsEngine.cpp" />
+    <ClCompile Include="math\kMath.cpp" />
+    <ClCompile Include="math\Matrix.cpp" />
+    <ClCompile Include="math\Vector.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

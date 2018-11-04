@@ -1,5 +1,7 @@
 #include "stdafx.h"
 
+
+
 int WINAPI wWinMain(
 	HINSTANCE hInstance,
 	HINSTANCE hPrevInstance,
@@ -17,9 +19,16 @@ int WINAPI wWinMain(
 	//eParam.screenHeight = 1080;
 
 	if (CEngine::Engine().Init(eParam)) {
+		/*initialize 3dCamera*/
+		CEngine::MainCamera().SetTarget({ 0.0f, 70.0f, 0.0f });
+		CEngine::MainCamera().SetNear(10.0f);
+		CEngine::MainCamera().SetFar(1000.0f);
+		CEngine::MainCamera().SetPosition({ 0.0f, 70.0f, 200.0f });
+		CEngine::MainCamera().SetUpdateProjMatrixFunc(Camera::enUpdateProjMatrixFunc_Perspective);
+		CEngine::MainCamera().Update();
+		//start main roop
 		CEngine::Engine().GameRoop();
 	}
-
 	CEngine::Engine().Final();
 
 	return 0;

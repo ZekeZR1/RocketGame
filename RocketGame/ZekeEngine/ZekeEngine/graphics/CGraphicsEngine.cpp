@@ -92,6 +92,14 @@ bool CGraphicsEngine::InitDirectX(HWND hwnd) {
 	m_pd3dDeviceContext->RSSetViewports(1, &viewport);
 	m_pd3dDeviceContext->RSSetState(m_rasterizerState);
 
+	//2d camera initialize 
+	m_2dCamera.SetTarget(CVector3::Zero());
+	m_2dCamera.SetPosition({ 0.f,0.f,-10.f });
+	m_2dCamera.SetUpdateProjMatrixFunc(Camera::enUpdateProjMatrixFunc_Ortho);
+	m_2dCamera.SetNear(0.1f);
+	m_2dCamera.SetFar(1000.0f);
+	m_2dCamera.Update();
+
 	return true;
 }
 

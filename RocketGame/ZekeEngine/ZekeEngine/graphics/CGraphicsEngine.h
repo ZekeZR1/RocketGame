@@ -22,6 +22,16 @@ namespace ZekeEngine {
 		ID3D11RenderTargetView* GetTarget() {
 			return m_backBuffer;
 		}
+
+		Camera& GetMainCamera()
+		{
+			return m_mainCamera;
+		}
+		Camera& Get2DCamera()
+		{
+			return m_2dCamera;
+		}
+
 	private:
 		ID3D11Device * m_pd3dDevice = nullptr;
 		ID3D11DeviceContext* m_pd3dDeviceContext = nullptr;
@@ -31,5 +41,11 @@ namespace ZekeEngine {
 		ID3D11RasterizerState* m_rasterizerState = nullptr;
 		ID3D11Texture2D* m_depthStencil = nullptr;
 		ID3D11DepthStencilView* m_depthStencilView = nullptr;
+		Camera	m_mainCamera;		//3d camera
+		Camera	m_2dCamera;			
+		const int				m_2dSpaceScreenWidth = 1280;		
+		const int				m_2dSpaceScreenHeight = 720;
+		int						m_frameBufferWidth = 0;
+		int						m_frameBufferHeight = 0;
 	};
 }
