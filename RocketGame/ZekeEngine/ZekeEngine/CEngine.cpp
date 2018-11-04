@@ -14,6 +14,7 @@ LRESULT CALLBACK MsgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 	return 0;
 }
+
 CEngine::CEngine()
 {
 }
@@ -28,10 +29,13 @@ bool CEngine::Init(const EngineParam& engineParam) {
 	if (!InitWindow(engineParam)) {
 		return false;
 	}
+	if (!m_graphicsEngine.InitDirectX(m_hWnd)) {
+		return false;
+	}
 }
 
 void CEngine::Final() {
-
+	m_graphicsEngine.Release();
 }
 
 void CEngine::GameRoop() {
@@ -51,7 +55,8 @@ void CEngine::GameRoop() {
 }
 
 void CEngine::Update() {
-
+	m_graphicsEngine.BeginRender();
+	m_graphicsEngine.EndRender();
 }
 
 bool CEngine::InitWindow(const EngineParam& engineParam) {

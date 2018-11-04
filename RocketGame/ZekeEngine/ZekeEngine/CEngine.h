@@ -1,6 +1,6 @@
 #pragma once
 namespace ZekeEngine {
-	class CEngine
+	class CEngine : Noncopyable
 	{
 	private:
 		CEngine();
@@ -36,15 +36,20 @@ namespace ZekeEngine {
 		{
 			return CEngine::GetInstance();
 		}
+		CGraphicsEngine& GetGraphicsEngine()
+		{
+			return m_graphicsEngine;
+		}
 	private:
 		/*
 		ウィンドウ初期化
 		*/
 		bool InitWindow(const EngineParam& engineParam);
 	private:
-		HINSTANCE		m_hinst = nullptr;					//アプリのインスタンス
-		HWND				m_hWnd = nullptr;					//ウィンドウのハンドル
-		int					m_screenWidth = 0;				//スクリーンの幅
-		int					m_screenHeight = 0;				//スクリーンの高さ
+		HINSTANCE				m_hinst = nullptr;					//アプリのインスタンス
+		HWND						m_hWnd = nullptr;					//ウィンドウのハンドル
+		int							m_screenWidth = 0;				//スクリーンの幅
+		int							m_screenHeight = 0;				//スクリーンの高さ
+		CGraphicsEngine		m_graphicsEngine;					//グラフィックエンジン
 	};
 }

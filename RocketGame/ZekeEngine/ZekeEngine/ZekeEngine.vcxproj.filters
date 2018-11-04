@@ -13,10 +13,22 @@
     <ClInclude Include="CEngine.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="graphics\CGraphicsEngine.h">
+      <Filter>Source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="policy\Noncopyable.h">
+      <Filter>Source\policy</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source">
       <UniqueIdentifier>{5ef9dbce-a7cf-4007-89f0-f2e8ddc8aa13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\graphics">
+      <UniqueIdentifier>{95f76648-7b89-451c-b218-b6c5104c32c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\policy">
+      <UniqueIdentifier>{8740828b-1245-4ed0-9a69-00a17228d450}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -25,6 +37,9 @@
     </ClCompile>
     <ClCompile Include="CEngine.cpp">
       <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\CGraphicsEngine.cpp">
+      <Filter>Source\graphics</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
