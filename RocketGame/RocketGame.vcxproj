@@ -70,7 +70,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LibraryPath>$(ProjDir)Engine/Debug;$(VC_IncludePath);$(WindowsSDK_LibraryPath);$(WindowsSDK_LibraryPath_x64);$(VC_LibraryPath_VC_x64_OneCore);$(WindowsSdkDir)/Lib/10.0.16299.0/ucrt/x64</LibraryPath>
+    <LibraryPath>$(VC_IncludePath);$(WindowsSDK_LibraryPath_x64);$(VC_LibraryPath_VC_x64_OneCore);$(WindowsSdkDir)/Lib/10.0.16299.0/ucrt/x64;$(ProjectDir)ZekeEngine/ZekeEngine/x64/Debug;$(VC_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
     <IncludePath>$(ProjectDir);$(ProjectDir)/../;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
   </PropertyGroup>
@@ -90,10 +90,12 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Create</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>C:\Users\Zeke\source\repos\RocketGame\Engine\Engine\exlib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Engine.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ZekeEngine.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -129,6 +131,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="ZekeEngine\ZekeEngine\ZekeEngine.vcxproj">
+      <Project>{f0f44462-d387-447d-aefc-35f5bec722cf}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
