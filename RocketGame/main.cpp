@@ -11,8 +11,10 @@ int WINAPI wWinMain(
 	eParam.hPrevInstance = hPrevInstance;
 	eParam.lpCmdLine = lpCmdLine;
 	eParam.nCmdShow = nCmdShow;
-	eParam.screenWidth = 1280;
-	eParam.screenHeight = 720;
+	//eParam.screenWidth = 1280;
+	eParam.screenWidth = 1920;
+	//eParam.screenHeight = 720;
+	eParam.screenHeight = 1080;
 
 	if (CEngine::Engine().Init(eParam)) {
 		CEngine::Engine().GameRoop();
