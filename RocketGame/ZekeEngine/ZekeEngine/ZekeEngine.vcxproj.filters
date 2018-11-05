@@ -31,6 +31,18 @@
     <ClInclude Include="math\Matrix.h">
       <Filter>Source\math</Filter>
     </ClInclude>
+    <ClInclude Include="gameObject\GameObject.h">
+      <Filter>Source\gameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="gameObject\GameObjectManager.h">
+      <Filter>Source\gameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="gameObject\CTransform.h">
+      <Filter>Source\gameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="util\Util.h">
+      <Filter>Source\util</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source">
@@ -44,6 +56,15 @@
     </Filter>
     <Filter Include="Source\math">
       <UniqueIdentifier>{43590726-7d09-4ea2-939c-2aeeb29bfc97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\gameObject">
+      <UniqueIdentifier>{36b5db77-c64b-4470-a326-f3ea944c6863}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\NewFilter1">
+      <UniqueIdentifier>{29005d02-c453-47c5-96b2-0b742556c8f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\util">
+      <UniqueIdentifier>{d7b8c791-701b-433e-b916-ac30f0870edb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +88,15 @@
     </ClCompile>
     <ClCompile Include="math\Matrix.cpp">
       <Filter>Source\math</Filter>
+    </ClCompile>
+    <ClCompile Include="gameObject\GameObject.cpp">
+      <Filter>Source\gameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="gameObject\GameObjectManager.cpp">
+      <Filter>Source\gameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="gameObject\CTransform.cpp">
+      <Filter>Source\gameObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
