@@ -60,9 +60,6 @@
     <Filter Include="Source\gameObject">
       <UniqueIdentifier>{36b5db77-c64b-4470-a326-f3ea944c6863}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\NewFilter1">
-      <UniqueIdentifier>{29005d02-c453-47c5-96b2-0b742556c8f5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\util">
       <UniqueIdentifier>{d7b8c791-701b-433e-b916-ac30f0870edb}</UniqueIdentifier>
     </Filter>
