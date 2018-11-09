@@ -37,6 +37,7 @@ namespace ZekeEngine {
 		{
 			return m_graphicsEngine;
 		}
+
 	private:
 		/*
 		ウィンドウ初期化

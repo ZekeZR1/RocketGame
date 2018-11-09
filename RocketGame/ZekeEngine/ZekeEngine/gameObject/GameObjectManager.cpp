@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "GameObjectManager.h"
 
-void GameObjectManager::Execute()
+void CGameObjectManager::Execute()
 {
 	ExecuteDeleteGameObjects();
 
@@ -10,26 +10,31 @@ void GameObjectManager::Execute()
 			obj->StartWrapper();
 		}
 	}
-	for (GameObjectList objList : m_gameObjectListArray) {
-		for (GameObject* obj : objList) {
-			obj->PreUpdateWrapper();
-		}
-	}
 
-	for (GameObjectList objList : m_gameObjectListArray) {
-		for (GameObject* obj : objList) {
-			obj->UpdateWrapper();
+	if (!m_isPause) {
+		for (GameObjectList objList : m_gameObjectListArray) {
+			for (GameObject* obj : objList) {
+				obj->PreUpdateWrapper();
+			}
 		}
-	}
-	for (GameObjectList objList : m_gameObjectListArray) {
-		for (GameObject* obj : objList) {
-			obj->PostUpdateWrapper();
+
+		for (GameObjectList objList : m_gameObjectListArray) {
+			for (GameObject* obj : objList) {
+				obj->UpdateWrapper();
+			}
+		}
+		for (GameObjectList objList : m_gameObjectListArray) {
+			for (GameObject* obj : objList) {
+				obj->PostUpdateWrapper();
+			}
 		}
 	}
 
 	//g_graphicsEngine->GetEffectEngine().Update();
 
 	GraphicsEngine().BeginRender();
+
+	//TODO : GPUイベント通知する
 
 	for (GameObjectList objList : m_gameObjectListArray) {
 		for (GameObject* obj : objList) {
@@ -50,16 +55,17 @@ void GameObjectManager::Execute()
 			obj->PostRenderWrapper();
 		}
 	}
+
 	GraphicsEngine().EndRender();
 }
 
-void GameObjectManager::UpdateSceneGraph()
+void CGameObjectManager::UpdateSceneGraph()
 {
 	for (auto transform : m_childrenOfRootTransformList) {
 		transform->UpdateWorldMatrixAll();
 	}
 }
-void GameObjectManager::ExecuteDeleteGameObjects()
+void CGameObjectManager::ExecuteDeleteGameObjects()
 {
 	int preBufferNo = m_currentDeleteObjectBufferNo;
 	//バッファを切り替え
@@ -81,7 +87,7 @@ void GameObjectManager::ExecuteDeleteGameObjects()
 		goList.clear();
 	}
 }
-void GameObjectManager::Init(int gameObjectPrioMax)
+void CGameObjectManager::Init(int gameObjectPrioMax)
 {
 	assert(gameObjectPrioMax <= GAME_OBJECT_PRIO_MAX && "ゲームオブジェクトの優先度の最大数が大きすぎます。");
 	m_gameObjectPriorityMax = static_cast<GameObjectPrio>(gameObjectPrioMax);

@@ -135,7 +135,6 @@ void CGraphicsEngine::Release() {
 }
 
 void CGraphicsEngine::BeginRender() {
-	float ClearColor[4] = { 0.5f, 0.5f, 0.5f, 1.0f };
 	m_pd3dDeviceContext->OMSetRenderTargets(1, &m_backBuffer, m_depthStencilView);
 	m_pd3dDeviceContext->ClearRenderTargetView(m_backBuffer, ClearColor);
 	m_pd3dDeviceContext->ClearDepthStencilView(m_depthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);

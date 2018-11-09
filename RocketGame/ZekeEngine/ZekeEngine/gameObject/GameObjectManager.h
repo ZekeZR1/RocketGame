@@ -3,13 +3,13 @@
 #include "GameObject.h"
 
 namespace ZekeEngine {
-	class GameObjectManager
+	class CGameObjectManager : Noncopyable
 	{
 	public:
-		GameObjectManager() :
+		CGameObjectManager() :
 			m_gameObjectPriorityMax(0) {
 		}
-		~GameObjectManager() {};
+		~CGameObjectManager() {};
 	public:
 		static unsigned int MakeGameObjectNameKey(const char* objectName)
 		{
@@ -24,9 +24,9 @@ namespace ZekeEngine {
 			return hash;
 		}
 	public:
-		static GameObjectManager& Instance()
+		static CGameObjectManager& Instance()
 		{
-			static GameObjectManager instance;
+			static CGameObjectManager instance;
 			return instance;
 		}
 
@@ -48,6 +48,14 @@ namespace ZekeEngine {
 				}
 
 			}
+		}
+
+		void Pause() {
+			m_isPause = true;
+		}
+
+		void PauseRelease() {
+			m_isPause = false;
 		}
 
 		template<class T, class... TArgs>
@@ -141,40 +149,44 @@ namespace ZekeEngine {
 		GameObjectPrio				m_gameObjectPriorityMax;				
 		int m_currentDeleteObjectBufferNo = 0;								
 		static const unsigned char 			GAME_OBJECT_PRIO_MAX = 255;
+		bool m_isPause = false;
 	};
 
 	template<class T, class... TArgs>
 	static inline T* NewGO(int priority, const char* objectName, TArgs... ctorArgs)
 	{
-		return GameObjectManager().NewGameObject<T>((GameObjectPrio)priority, objectName, ctorArgs...);
+		return CGameObjectManager().NewGameObject<T>((GameObjectPrio)priority, objectName, ctorArgs...);
 	}
 
 
 	static inline void DeleteGO(GameObject* go)
 	{
-		GameObjectManager().DeleteGameObject(go);
+		CGameObjectManager().DeleteGameObject(go);
 	}
 
 	static inline void AddGO(int priority, GameObject* go, const char* objectName = nullptr)
 	{
-		GameObjectManager().AddGameObject(static_cast<GameObjectPrio>(priority), go, objectName);
+		CGameObjectManager().AddGameObject(static_cast<GameObjectPrio>(priority), go, objectName);
 	}
 
 	static inline 	void FindGameObjectsWithTag(unsigned int tags, std::function<void(GameObject* go)>func)
 	{
-		GameObjectManager().FindGameObjectsWithTag(tags, func);
+		CGameObjectManager().FindGameObjectsWithTag(tags, func);
 	}
 
 	template<class T>
 	static inline T* FindGO(const char* objectName)
 	{
-		return GameObjectManager().FindGameObject<T>(objectName);
+		return CGameObjectManager().FindGameObject<T>(objectName);
 	}
 
 	template<class T>
 	static inline void QueryGOs(const char* objectName, std::function<bool(T* go)> func)
 	{
-		return GameObjectManager().FindGameObjects<T>(objectName, func);
+		return CGameObjectManager().FindGameObjects<T>(objectName, func);
 	}
 
+	static inline CGameObjectManager& GameObjectManager() {
+		return CGameObjectManager::Instance();
+	}
 }

@@ -111,7 +111,7 @@ namespace ZekeEngine {
 		{
 			return m_isNewFromGameObjectManager;
 		}
-		friend class GameObjectManager;
+		friend class CGameObjectManager;
 	protected:
 		GameObjectPrio m_priority;
 		bool m_isStart;

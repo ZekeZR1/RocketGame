@@ -29,6 +29,13 @@ bool CEngine::Init(const EngineParam& engineParam) {
 	if (!InitWindow(engineParam)) {
 		return false;
 	}
+
+	GameObjectManager().Init(32);
+	//TODO :各エンジン初期化
+	// : 物理エンジン初期化
+	// : サウンドエンジン初期化
+	// : エフェクトエンジン初期化
+	// : 入力デバイスを初期化
 	if (!m_graphicsEngine.InitDirectX(m_hWnd)) {
 		return false;
 	}
@@ -55,8 +62,7 @@ void CEngine::GameRoop() {
 }
 
 void CEngine::Update() {
-	m_graphicsEngine.BeginRender();
-	m_graphicsEngine.EndRender();
+	GameObjectManager().Execute();
 }
 
 bool CEngine::InitWindow(const EngineParam& engineParam) {

@@ -43,6 +43,9 @@
     <ClInclude Include="util\Util.h">
       <Filter>Source\util</Filter>
     </ClInclude>
+    <ClInclude Include="graphics\SkinModel.h">
+      <Filter>Source\graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source">
@@ -94,6 +97,9 @@
     </ClCompile>
     <ClCompile Include="gameObject\CTransform.cpp">
       <Filter>Source\gameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\SkinModel.cpp">
+      <Filter>Source\graphics</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

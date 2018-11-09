@@ -23,6 +23,10 @@ namespace ZekeEngine {
 			return m_backBuffer;
 		}
 
+		ID3D11DepthStencilView* GetDepthStencilView() {
+			return m_depthStencilView;
+		}
+
 		Camera& GetMainCamera()
 		{
 			return m_mainCamera;
@@ -33,6 +37,7 @@ namespace ZekeEngine {
 		}
 
 	private:
+		float ClearColor[4] = { 0.5f, 0.5f, 0.5f, 1.0f };
 		ID3D11Device * m_pd3dDevice = nullptr;
 		ID3D11DeviceContext* m_pd3dDeviceContext = nullptr;
 		IDXGISwapChain* m_pSwapChain = nullptr;
