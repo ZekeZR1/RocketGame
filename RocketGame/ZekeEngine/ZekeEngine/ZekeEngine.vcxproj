@@ -105,7 +105,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
@@ -161,7 +161,13 @@
     <ClInclude Include="gameObject\GameObjectManager.h" />
     <ClInclude Include="graphics\Camera.h" />
     <ClInclude Include="graphics\CGraphicsEngine.h" />
+    <ClInclude Include="graphics\Shader.h" />
+    <ClInclude Include="graphics\ShaderResources.h" />
+    <ClInclude Include="graphics\Skelton.h" />
     <ClInclude Include="graphics\SkinModel.h" />
+    <ClInclude Include="graphics\SkinModelData.h" />
+    <ClInclude Include="graphics\SkinModelEffect.h" />
+    <ClInclude Include="graphics\SkinModelShaderConst.h" />
     <ClInclude Include="math\kMath.h" />
     <ClInclude Include="math\Matrix.h" />
     <ClInclude Include="math\Vector.h" />
@@ -177,7 +183,12 @@
     <ClCompile Include="gameObject\GameObjectManager.cpp" />
     <ClCompile Include="graphics\Camera.cpp" />
     <ClCompile Include="graphics\CGraphicsEngine.cpp" />
+    <ClCompile Include="graphics\Shader.cpp" />
+    <ClCompile Include="graphics\ShaderResources.cpp" />
+    <ClCompile Include="graphics\Skelton.cpp" />
     <ClCompile Include="graphics\SkinModel.cpp" />
+    <ClCompile Include="graphics\SkinModelData.cpp" />
+    <ClCompile Include="graphics\SkinModelEffect.cpp" />
     <ClCompile Include="math\kMath.cpp" />
     <ClCompile Include="math\Matrix.cpp" />
     <ClCompile Include="math\Vector.cpp" />
