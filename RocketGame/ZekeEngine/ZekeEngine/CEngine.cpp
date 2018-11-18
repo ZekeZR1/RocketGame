@@ -24,6 +24,7 @@ CEngine::~CEngine()
 {
 }
 
+SkinModel m_model;
 
 bool CEngine::Init(const EngineParam& engineParam) {
 	if (!InitWindow(engineParam)) {
@@ -36,9 +37,13 @@ bool CEngine::Init(const EngineParam& engineParam) {
 	// : サウンドエンジン初期化
 	// : エフェクトエンジン初期化
 	// : 入力デバイスを初期化
+
 	if (!m_graphicsEngine.InitDirectX(m_hWnd)) {
 		return false;
 	}
+	m_model.Init(L"Assets/modelData/Octane.cmo");
+	m_model.UpdateWorldMatrix(CVector3::Zero(), CQuaternion::Identity(), CVector3::One());
+
 }
 
 void CEngine::Final() {

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "SkinModel.h"
-#include "SkinModelData.h"
+#include "SkinModelDataManager.h"
 
 SkinModel::~SkinModel()
 {
@@ -26,7 +26,8 @@ void SkinModel::Init(const wchar_t* filePath, EnFbxUpAxis enFbxUpAxis)
 	InitSamplerState();
 
 	//SkinModelDataManagerを使用してCMOファイルのロード。
-	m_modelDx = g_skinModelDataManager.Load(filePath, m_skeleton);
+	//TODO : これなんとかする　グローバルじゃなくてグラフィックエンジンとかからアクセスできるようにする
+	//m_modelDx = g_skinModelDataManager.Load(filePath, m_skeleton);
 
 	m_enFbxUpAxis = enFbxUpAxis;
 }

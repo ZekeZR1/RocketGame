@@ -1,4 +1,6 @@
 #include "stdafx.h"
+#include "Game.h"
+
 
 
 int WINAPI wWinMain(
@@ -26,6 +28,7 @@ int WINAPI wWinMain(
 		MainCamera().SetUpdateProjMatrixFunc(Camera::enUpdateProjMatrixFunc_Perspective);
 		MainCamera().Update();
 		//start main roop
+		//NewGO<Game>(0,"Game");
 		Engine().GameRoop();
 	}
 	Engine().Final();

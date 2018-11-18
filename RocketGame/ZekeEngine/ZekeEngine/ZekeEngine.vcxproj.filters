@@ -43,16 +43,16 @@
     <ClInclude Include="util\Util.h">
       <Filter>Source\util</Filter>
     </ClInclude>
-    <ClInclude Include="graphics\SkinModelData.h">
+    <ClInclude Include="graphics\Skelton.h">
       <Filter>Source\graphics\3DModel</Filter>
     </ClInclude>
     <ClInclude Include="graphics\SkinModel.h">
       <Filter>Source\graphics\3DModel</Filter>
     </ClInclude>
-    <ClInclude Include="graphics\Skelton.h">
+    <ClInclude Include="graphics\SkinModelEffect.h">
       <Filter>Source\graphics\3DModel</Filter>
     </ClInclude>
-    <ClInclude Include="graphics\SkinModelEffect.h">
+    <ClInclude Include="graphics\SkinModelShaderConst.h">
       <Filter>Source\graphics\3DModel</Filter>
     </ClInclude>
     <ClInclude Include="graphics\Shader.h">
@@ -61,7 +61,7 @@
     <ClInclude Include="graphics\ShaderResources.h">
       <Filter>Source\graphics\3DModel</Filter>
     </ClInclude>
-    <ClInclude Include="graphics\SkinModelShaderConst.h">
+    <ClInclude Include="graphics\SkinModelDataManager.h">
       <Filter>Source\graphics\3DModel</Filter>
     </ClInclude>
   </ItemGroup>
@@ -119,13 +119,7 @@
     <ClCompile Include="gameObject\CTransform.cpp">
       <Filter>Source\gameObject</Filter>
     </ClCompile>
-    <ClCompile Include="graphics\SkinModelData.cpp">
-      <Filter>Source\graphics\3DModel</Filter>
-    </ClCompile>
     <ClCompile Include="graphics\SkinModel.cpp">
-      <Filter>Source\graphics\3DModel</Filter>
-    </ClCompile>
-    <ClCompile Include="graphics\Skelton.cpp">
       <Filter>Source\graphics\3DModel</Filter>
     </ClCompile>
     <ClCompile Include="graphics\SkinModelEffect.cpp">
@@ -135,6 +129,12 @@
       <Filter>Source\graphics\3DModel</Filter>
     </ClCompile>
     <ClCompile Include="graphics\ShaderResources.cpp">
+      <Filter>Source\graphics\3DModel</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\Skelton.cpp">
+      <Filter>Source\graphics\3DModel</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\SkinModelDataManager.cpp">
       <Filter>Source\graphics\3DModel</Filter>
     </ClCompile>
   </ItemGroup>

@@ -53,6 +53,8 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\ImageContentTask.props" />
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\MeshContentTask.props" />
   </ImportGroup>
   <ImportGroup Label="Shared">
   </ImportGroup>
@@ -72,7 +74,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LibraryPath>$(VC_IncludePath);$(WindowsSDK_LibraryPath_x64);$(VC_LibraryPath_VC_x64_OneCore);$(WindowsSdkDir)/Lib/10.0.16299.0/ucrt/x64;$(ProjectDir)ZekeEngine/ZekeEngine/x64/Debug;$(VC_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <IncludePath>$(ProjectDir);$(ProjectDir)/../;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);$(ProjectDir)/../;$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Users\Zeke\source\repos\RocketGame\RocketGame\ZekeEngine\ZekeEngine\policy</IncludePath>
+    <ReferencePath>C:\Users\Zeke\source\repos\RocketGame\RocketGame\ZekeEngine\ZekeEngine\x64\Debug;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -93,10 +96,13 @@
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Users\Zeke\source\repos\RocketGame\Engine\Engine\exlib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Zeke\source\repos\RocketGame\Engine\Engine\exlib;C:\Users\Zeke\source\repos\RocketGame\RocketGame\ZekeEngine\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>ZekeEngine.lib;d3d11.lib;d3dcompiler.lib;xinput.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>
+    <MeshContentTask>
+      <ContentOutput>$(ProjectDir)Assets/%(Filename).cmo</ContentOutput>
+    </MeshContentTask>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -127,9 +133,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Game.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
@@ -137,7 +145,12 @@
       <Project>{f0f44462-d387-447d-aefc-35f5bec722cf}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <MeshContentTask Include="Assets\modelData\Octane.FBX" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\ImageContentTask.targets" />
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\MeshContentTask.targets" />
   </ImportGroup>
 </Project>

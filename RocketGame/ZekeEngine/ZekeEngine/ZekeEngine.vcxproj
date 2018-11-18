@@ -77,7 +77,8 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>.\x64\Debug</OutDir>
     <IncludePath>$(ProjectDir);$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)exlib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(ProjectDir)exlib;C:\Users\Zeke\source\repos\RocketGame\RocketGame\ZekeEngine\ZekeEngine\x64\Debug;$(LibraryPath)</LibraryPath>
+    <ReferencePath>C:\Users\Zeke\source\repos\RocketGame\RocketGame\ZekeEngine\ZekeEngine\x64\Debug;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -165,7 +166,7 @@
     <ClInclude Include="graphics\ShaderResources.h" />
     <ClInclude Include="graphics\Skelton.h" />
     <ClInclude Include="graphics\SkinModel.h" />
-    <ClInclude Include="graphics\SkinModelData.h" />
+    <ClInclude Include="graphics\SkinModelDataManager.h" />
     <ClInclude Include="graphics\SkinModelEffect.h" />
     <ClInclude Include="graphics\SkinModelShaderConst.h" />
     <ClInclude Include="math\kMath.h" />
@@ -187,7 +188,7 @@
     <ClCompile Include="graphics\ShaderResources.cpp" />
     <ClCompile Include="graphics\Skelton.cpp" />
     <ClCompile Include="graphics\SkinModel.cpp" />
-    <ClCompile Include="graphics\SkinModelData.cpp" />
+    <ClCompile Include="graphics\SkinModelDataManager.cpp" />
     <ClCompile Include="graphics\SkinModelEffect.cpp" />
     <ClCompile Include="math\kMath.cpp" />
     <ClCompile Include="math\Matrix.cpp" />

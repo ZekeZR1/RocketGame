@@ -25,12 +25,12 @@ void Bone::CalcWorldTRS(CVector3& trans, CQuaternion& rot, CVector3& scale)
 	rot.SetRotation(mWorld);
 	m_rotation = rot;
 }
-Skeleton::Skeleton()
+ZekeEngine::Skeleton::Skeleton()
 {
 	//リザーブ。
 	m_bones.reserve(MAX_BONE);
 }
-Skeleton::~Skeleton()
+ZekeEngine::Skeleton::~Skeleton()
 {
 	for (int boneNo = 0; boneNo < m_bones.size(); boneNo++) {
 		delete m_bones[boneNo];
@@ -44,7 +44,7 @@ Skeleton::~Skeleton()
 		m_boneMatrixSRV->Release();
 	}
 }
-void Skeleton::UpdateBoneWorldMatrix(Bone& bone, const CMatrix& parentMatrix)
+void ZekeEngine::Skeleton::UpdateBoneWorldMatrix(Bone& bone, const CMatrix& parentMatrix)
 {
 	//ワールド行列を計算する。
 	CMatrix mBoneWorld;
@@ -60,7 +60,7 @@ void Skeleton::UpdateBoneWorldMatrix(Bone& bone, const CMatrix& parentMatrix)
 		UpdateBoneWorldMatrix(*children[childNo], mBoneWorld);
 	}
 }
-bool Skeleton::Load(const wchar_t* filePath)
+bool ZekeEngine::Skeleton::Load(const wchar_t* filePath)
 {
 	//tksファイルをオープン。
 	//FILE* fp = _wfopen(filePath, L"rb");
@@ -166,7 +166,7 @@ bool Skeleton::Load(const wchar_t* filePath)
 	return true;
 }
 
-void Skeleton::InitBoneMatrixArrayStructuredBuffer()
+void ZekeEngine::Skeleton::InitBoneMatrixArrayStructuredBuffer()
 {
 	//descにStructuredBufferを作成するための情報を設定する。。
 	D3D11_BUFFER_DESC desc;
@@ -181,7 +181,7 @@ void Skeleton::InitBoneMatrixArrayStructuredBuffer()
 	//StructuredBufferを作成。
 	GraphicsEngine().GetD3DDevice()->CreateBuffer(&desc, NULL, &m_boneMatrixSB);
 }
-void Skeleton::InitBoneMatrixArrayShaderResourceView()
+void ZekeEngine::Skeleton::InitBoneMatrixArrayShaderResourceView()
 {
 	D3D11_BUFFER_DESC descBuf;
 	ZeroMemory(&descBuf, sizeof(descBuf));
@@ -197,7 +197,7 @@ void Skeleton::InitBoneMatrixArrayShaderResourceView()
 
 	GraphicsEngine().GetD3DDevice()->CreateShaderResourceView(m_boneMatrixSB, &desc, &m_boneMatrixSRV);
 }
-void Skeleton::Update(const CMatrix& mWorld)
+void ZekeEngine::Skeleton::Update(const CMatrix& mWorld)
 {
 	//ここがワールド行列を計算しているところ！！！
 	for (int boneNo = 0; boneNo < m_bones.size(); boneNo++) {
@@ -221,7 +221,7 @@ void Skeleton::Update(const CMatrix& mWorld)
 /*!
 *@brief	ボーン行列の配列をGPUに転送。
 */
-void Skeleton::SendBoneMatrixArrayToGPU()
+void ZekeEngine::Skeleton::SendBoneMatrixArrayToGPU()
 {
 	if (m_bones.empty()) {
 		return;
