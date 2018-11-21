@@ -37,6 +37,11 @@ bool CEngine::Init(const EngineParam& engineParam) {
 	// : サウンドエンジン初期化
 	// : エフェクトエンジン初期化
 	// : 入力デバイスを初期化
+	int padNo = 0;
+	for (auto& pad : m_pad) {
+		pad.Init(padNo);
+		padNo++;
+	}
 
 	if (!m_graphicsEngine.InitDirectX(m_hWnd)) {
 		return false;
@@ -67,6 +72,9 @@ void CEngine::GameRoop() {
 }
 
 void CEngine::Update() {
+	for (auto& pad : m_pad) {
+		pad.Update();
+	}
 	IGameObjectManager().Execute();
 }
 

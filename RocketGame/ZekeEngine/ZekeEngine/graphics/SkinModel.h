@@ -3,7 +3,6 @@
 
 namespace ZekeEngine {
 	//TODO : インスタンシング描画できるようにする
-	//TODO : モデルデータを引数に取るようにする
 
 	enum EnFbxUpAxis {
 		enFbxUpAxisY,		//Y-up

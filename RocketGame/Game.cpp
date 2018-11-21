@@ -13,12 +13,20 @@ Game::~Game()
 
 bool Game::Start() {
 	m_model.Init(L"Assets/modelData/Octane.cmo",enFbxUpAxisY);
-	m_model.UpdateWorldMatrix(m_modelPos, CQuaternion::Identity(), CVector3::One());
+	m_rot = CQuaternion::Identity();
+	m_rot.SetRotationDeg(CVector3::AxisY(), 90.0f);
+	m_model.UpdateWorldMatrix(m_modelPos, m_rot, CVector3::One());
 	return true;
 }
 
-void Game::Update() {
-
+void Game::Update(){
+	if (Pad(0).IsPress(enButtonUp)){
+		m_modelPos.z -= 10.0f;
+	}
+	if (Pad(0).IsPress(enButtonDown)) {
+		m_modelPos.z += 10.0f;
+	}
+	m_model.UpdateWorldMatrix(m_modelPos, m_rot, CVector3::One());
 }
 
 void Game::Render() {

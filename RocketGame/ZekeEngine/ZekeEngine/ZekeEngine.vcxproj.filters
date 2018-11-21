@@ -64,6 +64,9 @@
     <ClInclude Include="graphics\SkinModelDataManager.h">
       <Filter>Source\graphics\3DModel</Filter>
     </ClInclude>
+    <ClInclude Include="Input\Input.h">
+      <Filter>Source\Input</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source">
@@ -86,6 +89,9 @@
     </Filter>
     <Filter Include="Source\graphics\3DModel">
       <UniqueIdentifier>{287ec3e5-d0ed-4e3f-97bf-86fd821570be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Input">
+      <UniqueIdentifier>{40b64efd-a95a-4566-bae7-ea04a34fb144}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +142,9 @@
     </ClCompile>
     <ClCompile Include="graphics\SkinModelDataManager.cpp">
       <Filter>Source\graphics\3DModel</Filter>
+    </ClCompile>
+    <ClCompile Include="Input\Input.cpp">
+      <Filter>Source\Input</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

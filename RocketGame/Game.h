@@ -10,5 +10,6 @@ public:
 private:
 	SkinModel m_model;
 	CVector3 m_modelPos;
+	CQuaternion m_rot;
 };
 

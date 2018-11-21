@@ -1,4 +1,6 @@
 #pragma once
+#include "Input/Input.h"
+
 namespace ZekeEngine {
 	class CEngine : Noncopyable
 	{
@@ -37,7 +39,15 @@ namespace ZekeEngine {
 		{
 			return m_graphicsEngine;
 		}
-
+		/*!
+	* @brief	ゲームパッドの取得。
+	*@param[in]	padNo	パッド番号
+	*/
+		CPad& GetPad(int padNo)
+		{
+			//TK_ASSERT(padNo < CPad::CONNECT_PAD_MAX && padNo >= 0, "padNo is invalid");
+			return m_pad[padNo];
+		}
 	private:
 		/*
 		ウィンドウ初期化
@@ -49,6 +59,7 @@ namespace ZekeEngine {
 		int							m_screenWidth = 0;				//スクリーンの幅
 		int							m_screenHeight = 0;				//スクリーンの高さ
 		CGraphicsEngine		m_graphicsEngine;					//グラフィックエンジン
+		CPad						m_pad[CPad::CONNECT_PAD_MAX];
 	};
 	static inline CEngine& Engine()
 	{
@@ -63,5 +74,9 @@ namespace ZekeEngine {
 	static inline Camera& MainCamera2D()
 	{
 		return GraphicsEngine().Get2DCamera();
+	}
+	static inline CPad& Pad(int padNo)
+	{
+		return Engine().GetPad(padNo);
 	}
 }
