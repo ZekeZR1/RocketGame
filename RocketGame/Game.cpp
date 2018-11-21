@@ -20,11 +20,11 @@ bool Game::Start() {
 }
 
 void Game::Update(){
-	if (Pad(0).IsPress(enButtonUp)){
-		m_modelPos.z -= 10.0f;
+	if (Pad(0).IsPress(enButtonRB2)){
+		m_modelPos.z -= 5.0f;
 	}
-	if (Pad(0).IsPress(enButtonDown)) {
-		m_modelPos.z += 10.0f;
+	if (Pad(0).IsPress(enButtonLB2)) {
+		m_modelPos.z += 5.0f;
 	}
 	m_model.UpdateWorldMatrix(m_modelPos, m_rot, CVector3::One());
 }
