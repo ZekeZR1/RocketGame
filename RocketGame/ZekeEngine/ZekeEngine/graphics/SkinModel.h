@@ -115,19 +115,13 @@ namespace ZekeEngine {
 			CVector4 mCol;
 			CVector4 mDir;
 		};
-		struct DirLightConstantBuffer {
-			CVector4 mCol;
-			CVector4 mDir;
-		};
 		EnFbxUpAxis			m_enFbxUpAxis = enFbxUpAxisZ;	//!<FBXの上方向。
 		ID3D11Buffer*		m_cb = nullptr;					//!<定数バッファ。
-		ID3D11Buffer*		m_cb1 = nullptr;					//!<定数バッファ。
 		Skeleton			m_skeleton;						//!<スケルトン。
 		CMatrix				m_worldMatrix;					//!<ワールド行列。
 		DirectX::Model*		m_modelDx;						//!<DirectXTKが提供するモデルクラス。
 		ID3D11SamplerState* m_samplerState = nullptr;		//!<サンプラステート。
 		CVector4 m_DirLight = { 0.707,-0.707,0.0f,0.0f };
 		CVector4 m_DirCol = { 1.0f,1.0f,1.0f,1.0f };
-		//DirectionLight m_light;
 	};
 }

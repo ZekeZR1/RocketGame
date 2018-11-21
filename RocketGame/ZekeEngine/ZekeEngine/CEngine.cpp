@@ -31,7 +31,7 @@ bool CEngine::Init(const EngineParam& engineParam) {
 		return false;
 	}
 
-	GameObjectManager().Init(32);
+	IGameObjectManager().Init(32);
 	//TODO :各エンジン初期化
 	// : 物理エンジン初期化
 	// : サウンドエンジン初期化
@@ -67,7 +67,7 @@ void CEngine::GameRoop() {
 }
 
 void CEngine::Update() {
-	GameObjectManager().Execute();
+	IGameObjectManager().Execute();
 }
 
 bool CEngine::InitWindow(const EngineParam& engineParam) {

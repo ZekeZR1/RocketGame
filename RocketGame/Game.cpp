@@ -12,7 +12,7 @@ Game::~Game()
 }
 
 bool Game::Start() {
-	m_model.Init(L"Assets/modelData/Octane.cmo");
+	m_model.Init(L"Assets/modelData/Octane.cmo",enFbxUpAxisY);
 	m_model.UpdateWorldMatrix(m_modelPos, CQuaternion::Identity(), CVector3::One());
 	return true;
 }

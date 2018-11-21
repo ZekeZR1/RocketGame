@@ -1,4 +1,6 @@
 #pragma once
+#include "SkinModelDataManager.h"
+
 namespace ZekeEngine {
 	class CGraphicsEngine : Noncopyable
 	{
@@ -36,6 +38,9 @@ namespace ZekeEngine {
 			return m_2dCamera;
 		}
 
+		SkinModelDataManager& GetSkinModelDataManager() {
+			return m_skinModelDataManager;
+		}
 	private:
 		float ClearColor[4] = { 0.5f, 0.5f, 0.5f, 1.0f };
 		ID3D11Device * m_pd3dDevice = nullptr;
@@ -46,6 +51,7 @@ namespace ZekeEngine {
 		ID3D11RasterizerState* m_rasterizerState = nullptr;
 		ID3D11Texture2D* m_depthStencil = nullptr;
 		ID3D11DepthStencilView* m_depthStencilView = nullptr;
+		SkinModelDataManager m_skinModelDataManager;
 		Camera	m_mainCamera;		//3d camera
 		Camera	m_2dCamera;			
 		const int				m_2dSpaceScreenWidth = 1280;		

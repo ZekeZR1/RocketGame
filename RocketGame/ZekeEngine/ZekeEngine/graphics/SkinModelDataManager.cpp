@@ -3,8 +3,6 @@
 #include "SkinModelEffect.h"
 #include "Skelton.h"
 
-ZekeEngine::SkinModelDataManager g_skinModelDataManager;
-
 DirectX::Model* SkinModelDataManager::Load(const wchar_t* filePath, const ZekeEngine::Skeleton& skeleton)
 {
 	DirectX::Model* retModel = NULL;

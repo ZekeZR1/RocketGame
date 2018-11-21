@@ -26,5 +26,4 @@ namespace ZekeEngine {
 			std::unique_ptr<DirectX::Model>
 		> m_directXModelMap;
 	};
-	extern SkinModelDataManager g_skinModelDataManager;
 }

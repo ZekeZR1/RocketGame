@@ -28,7 +28,7 @@ int WINAPI wWinMain(
 		MainCamera().SetUpdateProjMatrixFunc(Camera::enUpdateProjMatrixFunc_Perspective);
 		MainCamera().Update();
 		//start main roop
-		//NewGO<Game>(0,"Game");
+		NewGO<Game>(0,"Game");
 		Engine().GameRoop();
 	}
 	Engine().Final();

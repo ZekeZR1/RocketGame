@@ -26,9 +26,7 @@ void SkinModel::Init(const wchar_t* filePath, EnFbxUpAxis enFbxUpAxis)
 	InitSamplerState();
 
 	//SkinModelDataManagerを使用してCMOファイルのロード。
-	//TODO : これなんとかする　グローバルじゃなくてグラフィックエンジンとかからアクセスできるようにする
-	//m_modelDx = g_skinModelDataManager.Load(filePath, m_skeleton);
-
+	m_modelDx = GraphicsEngine().GetSkinModelDataManager().Load(filePath, m_skeleton);
 	m_enFbxUpAxis = enFbxUpAxis;
 }
 void SkinModel::InitSkeleton(const wchar_t* filePath)

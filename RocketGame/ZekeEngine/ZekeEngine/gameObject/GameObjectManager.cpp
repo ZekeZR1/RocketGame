@@ -1,7 +1,9 @@
 #include "stdafx.h"
 #include "GameObjectManager.h"
+#include "GameObject.h"
+#include "CTransform.h"
 
-void CGameObjectManager::Execute()
+void GameObjectManager::Execute()
 {
 	ExecuteDeleteGameObjects();
 
@@ -10,31 +12,27 @@ void CGameObjectManager::Execute()
 			obj->StartWrapper();
 		}
 	}
-
-	if (!m_isPause) {
-		for (GameObjectList objList : m_gameObjectListArray) {
-			for (GameObject* obj : objList) {
-				obj->PreUpdateWrapper();
-			}
+	for (GameObjectList objList : m_gameObjectListArray) {
+		for (GameObject* obj : objList) {
+			obj->PreUpdateWrapper();
 		}
+	}
 
-		for (GameObjectList objList : m_gameObjectListArray) {
-			for (GameObject* obj : objList) {
-				obj->UpdateWrapper();
-			}
+	for (GameObjectList objList : m_gameObjectListArray) {
+		for (GameObject* obj : objList) {
+			obj->UpdateWrapper();
 		}
-		for (GameObjectList objList : m_gameObjectListArray) {
-			for (GameObject* obj : objList) {
-				obj->PostUpdateWrapper();
-			}
+	}
+	for (GameObjectList objList : m_gameObjectListArray) {
+		for (GameObject* obj : objList) {
+			obj->PostUpdateWrapper();
 		}
 	}
 
 	//g_graphicsEngine->GetEffectEngine().Update();
 
+	//GradientFill->BegineRender();
 	GraphicsEngine().BeginRender();
-
-	//TODO : GPUイベント通知する
 
 	for (GameObjectList objList : m_gameObjectListArray) {
 		for (GameObject* obj : objList) {
@@ -48,27 +46,27 @@ void CGameObjectManager::Execute()
 		}
 	}
 
-	//Engine::IEngine().effectEngine.Draw();
 
 	for (GameObjectList objList : m_gameObjectListArray) {
 		for (GameObject* obj : objList) {
 			obj->PostRenderWrapper();
 		}
 	}
-
+	//g_graphicsEngine->EndRender();
 	GraphicsEngine().EndRender();
 }
 
-void CGameObjectManager::UpdateSceneGraph()
+void GameObjectManager::UpdateSceneGraph()
 {
+	//ワールド行列を更新。
 	for (auto transform : m_childrenOfRootTransformList) {
 		transform->UpdateWorldMatrixAll();
 	}
 }
-void CGameObjectManager::ExecuteDeleteGameObjects()
+void GameObjectManager::ExecuteDeleteGameObjects()
 {
 	int preBufferNo = m_currentDeleteObjectBufferNo;
-	//バッファを切り替え
+	//バッファを切り替え。
 	m_currentDeleteObjectBufferNo = 1 ^ m_currentDeleteObjectBufferNo;
 	for (GameObjectList& goList : m_deleteObjectArray[preBufferNo]) {
 		for (GameObject* go : goList) {
@@ -76,7 +74,7 @@ void CGameObjectManager::ExecuteDeleteGameObjects()
 			GameObjectList& goExecList = m_gameObjectListArray.at(prio);
 			auto it = std::find(goExecList.begin(), goExecList.end(), go);
 			if (it != goExecList.end()) {
-				//削除リストから除外された
+				//削除リストから除外された。
 				(*it)->m_isRegistDeadList = false;
 				if ((*it)->IsNewFromGameObjectManager()) {
 					delete (*it);
@@ -87,7 +85,7 @@ void CGameObjectManager::ExecuteDeleteGameObjects()
 		goList.clear();
 	}
 }
-void CGameObjectManager::Init(int gameObjectPrioMax)
+void GameObjectManager::Init(int gameObjectPrioMax)
 {
 	assert(gameObjectPrioMax <= GAME_OBJECT_PRIO_MAX && "ゲームオブジェクトの優先度の最大数が大きすぎます。");
 	m_gameObjectPriorityMax = static_cast<GameObjectPrio>(gameObjectPrioMax);
