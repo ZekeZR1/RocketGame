@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "GameCamera.h"
-
+#include "Player.h"
 
 GameCamera::GameCamera()
 {
@@ -17,8 +17,9 @@ bool GameCamera::Start() {
 
 void GameCamera::Update() {
 	MainCamera2D().Update();
-	SkinModelRender* tar = FindGO<SkinModelRender>("octane");
+	Player* tar = FindGO<Player>("Player");
 	m_target = tar->GetPosition();
+	m_target.y += 20.f;
 
 	float x = Pad(0).GetRStickXF();
 	float y = Pad(0).GetRStickYF();

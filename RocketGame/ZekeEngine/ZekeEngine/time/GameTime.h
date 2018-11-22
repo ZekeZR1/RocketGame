@@ -43,7 +43,7 @@ namespace ZekeEngine {
 
 	private:
 		std::list<float> m_frameDeltaTimeQue;
-		float		m_frameDeltaTime = 1.0f / 60.0f;		//1フレームの経過時間。
+		float		m_frameDeltaTime = 1.0f / 30.0f;		//1フレームの経過時間。
 	};
 	static CGameTime& GameTime()
 	{

@@ -1,6 +1,8 @@
 #ifndef _CGAMEOBJECTMANAGER_H_
 #define _CGAMEOBJECTMANAGER_H_
 
+//TODO :　メモリリークチェックする
+
 #include "GameObject.h"
 #include "../util/Util.h"
 #include "CTransform.h"

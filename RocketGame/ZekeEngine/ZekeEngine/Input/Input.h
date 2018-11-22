@@ -23,6 +23,9 @@ namespace ZekeEngine {
 		enButtonLB1,		//!<LB1ボタン。
 		enButtonLB2,		//!<LB2ボタン。
 		enButtonLB3,		//!<LB3ボタン。
+		//ここから動作の仮想ボタン
+		enGoForward,
+		enGOBack,
 		enButtonNum,	//!<ボタンの数。
 	};
 	/*!

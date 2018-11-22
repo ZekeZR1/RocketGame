@@ -17,9 +17,7 @@ namespace ZekeEngine {
 	}
 
 	void SkinModelRender::Update() {
-//TODO : add time
-		//m_animation.Update(IGameTime().GetFrameDeltaTime());
-		m_animation.Update(1.f/30.f);
+		m_animation.Update(GameTime().GetFrameDeltaTime());
 		m_skinModel.UpdateWorldMatrix(m_pos, m_rot, m_scale);
 		m_animation.Update(1.f/30.f);
 	}

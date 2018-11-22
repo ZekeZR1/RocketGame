@@ -31,6 +31,8 @@ namespace ZekeEngine {
 			{ enButtonLB1		, XINPUT_GAMEPAD_LEFT_SHOULDER },
 			{ enButtonLB2		, 0 },
 			{ enButtonLB3		, XINPUT_GAMEPAD_LEFT_THUMB },
+			{enGoForward,		0},
+			{enGOBack,		0},
 		};
 		/*!
 		*@brief	仮想ボタンとキーボードとの関連付けを表す構造体。
@@ -56,6 +58,8 @@ namespace ZekeEngine {
 			{ enButtonLB1		, 'B' },
 			{ enButtonLB2		, 'N' },
 			{ enButtonLB3		, 'M' },
+			{enGoForward		, 'W'},
+			{enGOBack			, 'S' },
 		};
 	}
 	CPad::CPad()
@@ -92,6 +96,16 @@ namespace ZekeEngine {
 				m_trigger[enButtonLB2] = 0;
 				m_press[enButtonLB2] = 0;
 			}
+			//go back
+			//左トリガー。
+			if (m_state.state.Gamepad.bLeftTrigger != 0) {
+				m_trigger[enGOBack] = 1 ^ m_press[enGOBack];
+				m_press[enGOBack] = 1;
+			}
+			else {
+				m_trigger[enGOBack] = 0;
+				m_press[enGOBack] = 0;
+			}
 			//右トリガー
 			if (m_state.state.Gamepad.bRightTrigger != 0) {
 				m_trigger[enButtonRB2] = 1 ^ m_press[enButtonRB2];
@@ -100,6 +114,15 @@ namespace ZekeEngine {
 			else {
 				m_trigger[enButtonRB2] = 0;
 				m_press[enButtonRB2] = 0;
+			}
+			//go forward
+			if (m_state.state.Gamepad.bRightTrigger != 0) {
+				m_trigger[enGoForward] = 1 ^ m_press[enGoForward];
+				m_press[enGoForward] = 1;
+			}
+			else {
+				m_trigger[enGoForward] = 0;
+				m_press[enGoForward] = 0;
 			}
 			if ((m_state.state.Gamepad.sThumbLX < INPUT_DEADZONE &&
 				m_state.state.Gamepad.sThumbLX > -INPUT_DEADZONE) &&
