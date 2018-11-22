@@ -1,15 +1,20 @@
 #pragma once
-#include "Skelton.h"
+#include "Skeleton.h"
 
 namespace ZekeEngine {
 	//TODO : インスタンシング描画できるようにする
 
+/*!
+*@brief	FBXの上方向。
+*/
 	enum EnFbxUpAxis {
 		enFbxUpAxisY,		//Y-up
 		enFbxUpAxisZ,		//Z-up
 	};
-
-	class SkinModel : Noncopyable
+	/*!
+	*@brief	スキンモデルクラス。
+	*/
+	class SkinModel
 	{
 	public:
 		//メッシュが見つかったときのコールバック関数。
@@ -24,7 +29,7 @@ namespace ZekeEngine {
 		*@param[in]	filePath		ロードするcmoファイルのファイルパス。
 		*@param[in] enFbxUpAxis		fbxの上軸。デフォルトはenFbxUpAxisZ。
 		*/
-		void Init(const wchar_t* filePath, EnFbxUpAxis enFbxUpAxis = enFbxUpAxisZ);
+		void Init(const wchar_t* filePath, EnFbxUpAxis enFbxUpAxis = enFbxUpAxisZ, const char* entryPS = "PSMain", const char* entryVS = "VSMain");
 
 		CMatrix GetWorldMatrix() {
 			return m_worldMatrix;
@@ -114,13 +119,21 @@ namespace ZekeEngine {
 			CVector4 mCol;
 			CVector4 mDir;
 		};
+		struct DirLightConstantBuffer {
+			CVector4 mCol;
+			CVector4 mDir;
+		};
 		EnFbxUpAxis			m_enFbxUpAxis = enFbxUpAxisZ;	//!<FBXの上方向。
 		ID3D11Buffer*		m_cb = nullptr;					//!<定数バッファ。
+		ID3D11Buffer*		m_cb1 = nullptr;					//!<定数バッファ。
 		Skeleton			m_skeleton;						//!<スケルトン。
 		CMatrix				m_worldMatrix;					//!<ワールド行列。
 		DirectX::Model*		m_modelDx;						//!<DirectXTKが提供するモデルクラス。
 		ID3D11SamplerState* m_samplerState = nullptr;		//!<サンプラステート。
 		CVector4 m_DirLight = { 0.707,-0.707,0.0f,0.0f };
 		CVector4 m_DirCol = { 1.0f,1.0f,1.0f,1.0f };
+		const char* m_vsmain;
+		const char* m_psmain;
+		//DirectionLight m_light;
 	};
 }

@@ -160,22 +160,40 @@
     <ClInclude Include="gameObject\CTransform.h" />
     <ClInclude Include="gameObject\GameObject.h" />
     <ClInclude Include="gameObject\GameObjectManager.h" />
+    <ClInclude Include="graphics\animation\Animation.h" />
+    <ClInclude Include="graphics\animation\AnimationClip.h" />
+    <ClInclude Include="graphics\animation\AnimationPlayController.h" />
     <ClInclude Include="graphics\Camera.h" />
+    <ClInclude Include="graphics\CConstantBuffer.h" />
     <ClInclude Include="graphics\CGraphicsEngine.h" />
+    <ClInclude Include="graphics\CIndexBuffer.h" />
+    <ClInclude Include="graphics\CPrimitive.h" />
+    <ClInclude Include="graphics\CUnorderedAccessView.h" />
+    <ClInclude Include="graphics\CVertexBuffer.h" />
+    <ClInclude Include="graphics\GPUBuffer\CGPUBuffer.h" />
     <ClInclude Include="graphics\Shader.h" />
+    <ClInclude Include="graphics\ShaderResouceView.h" />
     <ClInclude Include="graphics\ShaderResources.h" />
-    <ClInclude Include="graphics\Skelton.h" />
+    <ClInclude Include="graphics\Skeleton.h" />
     <ClInclude Include="graphics\SkinModel.h" />
     <ClInclude Include="graphics\SkinModelDataManager.h" />
     <ClInclude Include="graphics\SkinModelEffect.h" />
+    <ClInclude Include="graphics\SkinModelRender.h" />
     <ClInclude Include="graphics\SkinModelShaderConst.h" />
+    <ClInclude Include="graphics\Sprite\Effect.h" />
+    <ClInclude Include="graphics\Sprite\SpBuffer.h" />
+    <ClInclude Include="graphics\Sprite\Sprite.h" />
+    <ClInclude Include="graphics\Sprite\SpriteRender.h" />
+    <ClInclude Include="graphics\StructedBuffer.h" />
     <ClInclude Include="Input\Input.h" />
     <ClInclude Include="math\kMath.h" />
     <ClInclude Include="math\Matrix.h" />
     <ClInclude Include="math\Vector.h" />
     <ClInclude Include="policy\Noncopyable.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="time\GameTime.h" />
     <ClInclude Include="util\Util.h" />
   </ItemGroup>
   <ItemGroup>
@@ -183,14 +201,30 @@
     <ClCompile Include="gameObject\CTransform.cpp" />
     <ClCompile Include="gameObject\GameObject.cpp" />
     <ClCompile Include="gameObject\GameObjectManager.cpp" />
+    <ClCompile Include="graphics\animation\Animation.cpp" />
+    <ClCompile Include="graphics\animation\AnimationClip.cpp" />
+    <ClCompile Include="graphics\animation\AnimationPlayController.cpp" />
     <ClCompile Include="graphics\Camera.cpp" />
+    <ClCompile Include="graphics\CConstantBuffer.cpp" />
     <ClCompile Include="graphics\CGraphicsEngine.cpp" />
+    <ClCompile Include="graphics\CIndexBuffer.cpp" />
+    <ClCompile Include="graphics\CPrimitive.cpp" />
+    <ClCompile Include="graphics\CUnorderedAccessView.cpp" />
+    <ClCompile Include="graphics\CVertexBuffer.cpp" />
+    <ClCompile Include="graphics\GPUBuffer\CGPUBuffer.cpp" />
     <ClCompile Include="graphics\Shader.cpp" />
+    <ClCompile Include="graphics\ShaderResouceView.cpp" />
     <ClCompile Include="graphics\ShaderResources.cpp" />
-    <ClCompile Include="graphics\Skelton.cpp" />
+    <ClCompile Include="graphics\Skeleton.cpp" />
     <ClCompile Include="graphics\SkinModel.cpp" />
     <ClCompile Include="graphics\SkinModelDataManager.cpp" />
     <ClCompile Include="graphics\SkinModelEffect.cpp" />
+    <ClCompile Include="graphics\SkinModelRender.cpp" />
+    <ClCompile Include="graphics\Sprite\Effect.cpp" />
+    <ClCompile Include="graphics\Sprite\SpBuffer.cpp" />
+    <ClCompile Include="graphics\Sprite\Sprite.cpp" />
+    <ClCompile Include="graphics\Sprite\SpriteRender.cpp" />
+    <ClCompile Include="graphics\StructedBuffer.cpp" />
     <ClCompile Include="Input\Input.cpp" />
     <ClCompile Include="math\kMath.cpp" />
     <ClCompile Include="math\Matrix.cpp" />
@@ -201,6 +235,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="time\GameTime.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ZekeEngine.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

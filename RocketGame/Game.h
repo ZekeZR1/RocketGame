@@ -8,8 +8,8 @@ public:
 	void Update() override;
 	void Render() override;
 private:
-	SkinModel m_model;
-	CVector3 m_modelPos;
-	CQuaternion m_rot;
+	SkinModelRender* m_octane;
+	CVector3 m_pos = CVector3::Zero();
+	CQuaternion m_rot = CQuaternion::Identity();
 };
 

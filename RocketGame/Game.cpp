@@ -12,23 +12,15 @@ Game::~Game()
 }
 
 bool Game::Start() {
-	m_model.Init(L"Assets/modelData/Octane.cmo",enFbxUpAxisY);
-	m_rot = CQuaternion::Identity();
-	m_rot.SetRotationDeg(CVector3::AxisY(), 90.0f);
-	m_model.UpdateWorldMatrix(m_modelPos, m_rot, CVector3::One());
+	m_octane = NewGO<SkinModelRender>(0, "octane");
+	m_octane->Init(L"Assets/modelData/Octane.cmo", nullptr, 0, enFbxUpAxisY);
 	return true;
 }
 
 void Game::Update(){
-	if (Pad(0).IsPress(enButtonRB2)){
-		m_modelPos.z -= 5.0f;
-	}
-	if (Pad(0).IsPress(enButtonLB2)) {
-		m_modelPos.z += 5.0f;
-	}
-	m_model.UpdateWorldMatrix(m_modelPos, m_rot, CVector3::One());
+	m_octane->SetPosition(m_pos);
+	m_octane->SetRotation(m_rot);
 }
 
 void Game::Render() {
-	m_model.Draw();
 }

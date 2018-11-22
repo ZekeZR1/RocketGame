@@ -43,9 +43,6 @@
     <ClInclude Include="util\Util.h">
       <Filter>Source\util</Filter>
     </ClInclude>
-    <ClInclude Include="graphics\Skelton.h">
-      <Filter>Source\graphics\3DModel</Filter>
-    </ClInclude>
     <ClInclude Include="graphics\SkinModel.h">
       <Filter>Source\graphics\3DModel</Filter>
     </ClInclude>
@@ -66,6 +63,61 @@
     </ClInclude>
     <ClInclude Include="Input\Input.h">
       <Filter>Source\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\SkinModelRender.h">
+      <Filter>Source\graphics\3DModel</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\animation\AnimationClip.h">
+      <Filter>Source\graphics\3DModel\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\animation\AnimationPlayController.h">
+      <Filter>Source\graphics\3DModel\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\animation\Animation.h">
+      <Filter>Source\graphics\3DModel\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\Skeleton.h">
+      <Filter>Source\graphics\3DModel</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="time\GameTime.h">
+      <Filter>Source\time</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\Sprite\SpBuffer.h">
+      <Filter>Source\graphics\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\Sprite\Sprite.h">
+      <Filter>Source\graphics\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\Sprite\Effect.h">
+      <Filter>Source\graphics\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\Sprite\SpriteRender.h">
+      <Filter>Source\graphics\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\StructedBuffer.h">
+      <Filter>Source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\ShaderResouceView.h">
+      <Filter>Source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\CUnorderedAccessView.h">
+      <Filter>Source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\CPrimitive.h">
+      <Filter>Source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\CConstantBuffer.h">
+      <Filter>Source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\CIndexBuffer.h">
+      <Filter>Source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\GPUBuffer\CGPUBuffer.h">
+      <Filter>Source\graphics\GPUBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\CVertexBuffer.h">
+      <Filter>Source\graphics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -92,6 +144,18 @@
     </Filter>
     <Filter Include="Source\Input">
       <UniqueIdentifier>{40b64efd-a95a-4566-bae7-ea04a34fb144}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\graphics\3DModel\animation">
+      <UniqueIdentifier>{9cb3a433-bce9-492a-89c1-625379557686}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\time">
+      <UniqueIdentifier>{c1bbbf93-025f-46ab-9d22-0fb23d706cef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\graphics\Sprite">
+      <UniqueIdentifier>{e8754d57-ec8b-4af9-b217-01ae25825639}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\graphics\GPUBuffer">
+      <UniqueIdentifier>{e42414c9-6271-498c-83ce-b6fb7110e54d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -137,14 +201,68 @@
     <ClCompile Include="graphics\ShaderResources.cpp">
       <Filter>Source\graphics\3DModel</Filter>
     </ClCompile>
-    <ClCompile Include="graphics\Skelton.cpp">
-      <Filter>Source\graphics\3DModel</Filter>
-    </ClCompile>
     <ClCompile Include="graphics\SkinModelDataManager.cpp">
       <Filter>Source\graphics\3DModel</Filter>
     </ClCompile>
     <ClCompile Include="Input\Input.cpp">
       <Filter>Source\Input</Filter>
     </ClCompile>
+    <ClCompile Include="graphics\SkinModelRender.cpp">
+      <Filter>Source\graphics\3DModel</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\animation\AnimationClip.cpp">
+      <Filter>Source\graphics\3DModel\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\animation\AnimationPlayController.cpp">
+      <Filter>Source\graphics\3DModel\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\animation\Animation.cpp">
+      <Filter>Source\graphics\3DModel\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\Skeleton.cpp">
+      <Filter>Source\graphics\3DModel</Filter>
+    </ClCompile>
+    <ClCompile Include="time\GameTime.cpp">
+      <Filter>Source\time</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\Sprite\Sprite.cpp">
+      <Filter>Source\graphics\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\Sprite\Effect.cpp">
+      <Filter>Source\graphics\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\Sprite\SpBuffer.cpp">
+      <Filter>Source\graphics\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\Sprite\SpriteRender.cpp">
+      <Filter>Source\graphics\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\StructedBuffer.cpp">
+      <Filter>Source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\ShaderResouceView.cpp">
+      <Filter>Source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\CUnorderedAccessView.cpp">
+      <Filter>Source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\CPrimitive.cpp">
+      <Filter>Source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\CConstantBuffer.cpp">
+      <Filter>Source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\CIndexBuffer.cpp">
+      <Filter>Source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\GPUBuffer\CGPUBuffer.cpp">
+      <Filter>Source\graphics\GPUBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\CVertexBuffer.cpp">
+      <Filter>Source\graphics</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ZekeEngine.rc" />
   </ItemGroup>
 </Project>

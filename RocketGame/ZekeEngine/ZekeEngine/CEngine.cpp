@@ -24,8 +24,6 @@ CEngine::~CEngine()
 {
 }
 
-SkinModel m_model;
-
 bool CEngine::Init(const EngineParam& engineParam) {
 	if (!InitWindow(engineParam)) {
 		return false;
@@ -46,9 +44,6 @@ bool CEngine::Init(const EngineParam& engineParam) {
 	if (!m_graphicsEngine.InitDirectX(m_hWnd)) {
 		return false;
 	}
-	m_model.Init(L"Assets/modelData/Octane.cmo");
-	m_model.UpdateWorldMatrix(CVector3::Zero(), CQuaternion::Identity(), CVector3::One());
-
 }
 
 void CEngine::Final() {

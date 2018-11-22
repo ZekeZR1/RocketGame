@@ -1,6 +1,6 @@
 #pragma once
 #include <map>
-#include "Skelton.h"
+#include "Skeleton.h"
 class Skeleton;
 namespace ZekeEngine {
 	/*!
@@ -15,7 +15,7 @@ namespace ZekeEngine {
 		*@param[in]	filePath	ファイルパス。
 		*@param[in]	skeleton	スケルトン。
 		*/
-		DirectX::Model* Load(const wchar_t* filePath, const Skeleton& sketon);
+		DirectX::Model* Load(const wchar_t* filePath, const Skeleton& sketon, const char*, const char*);
 		/*!
 		*@brief	モデルデータを全開放。
 		*/
