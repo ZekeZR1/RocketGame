@@ -11,5 +11,8 @@ private:
 	SkinModelRender* m_octane;
 	CVector3 m_pos = CVector3::Zero();
 	CQuaternion m_rot = CQuaternion::Identity();
+	SkinModelRender* m_stage;
+	CVector3 m_stagePos = CVector3::Zero();
+	CQuaternion m_stageRot = CQuaternion::Identity();
 };
 

@@ -11,6 +11,9 @@
     <Filter Include="Assets\modelData">
       <UniqueIdentifier>{84aa66f7-02e6-4aaf-843d-a88dd29e17f5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Assets\sprite">
+      <UniqueIdentifier>{965391a6-0a0c-4af9-83b5-0972f4aa269f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -35,5 +38,10 @@
     <MeshContentTask Include="Assets\modelData\Stage.FBX">
       <Filter>Assets\modelData</Filter>
     </MeshContentTask>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="Assets\sprite\test.png">
+      <Filter>Assets\sprite</Filter>
+    </ImageContentTask>
   </ItemGroup>
 </Project>
