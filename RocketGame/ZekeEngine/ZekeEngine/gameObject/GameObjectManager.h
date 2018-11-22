@@ -243,7 +243,7 @@ namespace ZekeEngine {
 	template<class T>
 	static inline T* FindGO(const char* objectName)
 	{
-		return GameObjectManager().FindGameObject<T>(objectName);
+		return IGameObjectManager().FindGameObject<T>(objectName);
 	}
 	/*!
 	*@brief	ゲームオブジェクトの検索のヘルパー関数。
@@ -255,7 +255,7 @@ namespace ZekeEngine {
 	template<class T>
 	static inline void QueryGOs(const char* objectName, std::function<bool(T* go)> func)
 	{
-		return GameObjectManager().FindGameObjects<T>(objectName, func);
+		return IGameObjectManager().FindGameObjects<T>(objectName, func);
 	}
 }
 #endif // _CGAMEOBJECTMANAGER_H

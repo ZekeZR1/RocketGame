@@ -1,4 +1,5 @@
 #pragma once
+#include "GameCamera.h"
 class Game : public GameObject
 {
 public:
@@ -14,5 +15,7 @@ private:
 	SkinModelRender* m_stage;
 	CVector3 m_stagePos = CVector3::Zero();
 	CQuaternion m_stageRot = CQuaternion::Identity();
+	CVector3 m_cameraPos = CVector3::Zero();
+	GameCamera* m_gameCamera;
 };
 

@@ -23,7 +23,7 @@ int WINAPI wWinMain(
 		/*initialize 3dCamera*/
 		MainCamera().SetTarget({ 0.0f, 70.0f, 0.0f });
 		MainCamera().SetNear(10.0f);
-		MainCamera().SetFar(1000.0f);
+		MainCamera().SetFar(50000.0f);
 		MainCamera().SetPosition({ 0.0f, 70.0f, 200.0f });
 		MainCamera().SetUpdateProjMatrixFunc(Camera::enUpdateProjMatrixFunc_Perspective);
 		MainCamera().Update();
