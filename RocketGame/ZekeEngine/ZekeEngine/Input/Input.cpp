@@ -16,23 +16,24 @@ namespace ZekeEngine {
 
 		const VirtualPadToXPad vPadToXPadTable[enButtonNum] = {
 			{ enButtonUp		, XINPUT_GAMEPAD_DPAD_UP },
-			{ enButtonDown		, XINPUT_GAMEPAD_DPAD_DOWN },
-			{ enButtonLeft		, XINPUT_GAMEPAD_DPAD_LEFT },
-			{ enButtonRight		, XINPUT_GAMEPAD_DPAD_RIGHT },
-			{ enButtonA			, XINPUT_GAMEPAD_A },
-			{ enButtonB			, XINPUT_GAMEPAD_B },
-			{ enButtonY			, XINPUT_GAMEPAD_Y },
-			{ enButtonX			, XINPUT_GAMEPAD_X },
-			{ enButtonSelect	, XINPUT_GAMEPAD_BACK },
-			{ enButtonStart		, XINPUT_GAMEPAD_START },
-			{ enButtonRB1		, XINPUT_GAMEPAD_RIGHT_SHOULDER },
-			{ enButtonRB2		, 0 },
-			{ enButtonRB3		, XINPUT_GAMEPAD_RIGHT_THUMB },
-			{ enButtonLB1		, XINPUT_GAMEPAD_LEFT_SHOULDER },
-			{ enButtonLB2		, 0 },
-			{ enButtonLB3		, XINPUT_GAMEPAD_LEFT_THUMB },
-			{enGoForward,		0},
-			{enGOBack,		0},
+		{ enButtonDown		, XINPUT_GAMEPAD_DPAD_DOWN },
+		{ enButtonLeft		, XINPUT_GAMEPAD_DPAD_LEFT },
+		{ enButtonRight		, XINPUT_GAMEPAD_DPAD_RIGHT },
+		{ enButtonA			, XINPUT_GAMEPAD_A },
+		{ enButtonB			, XINPUT_GAMEPAD_B },
+		{ enButtonY			, XINPUT_GAMEPAD_Y },
+		{ enButtonX			, XINPUT_GAMEPAD_X },
+		{ enButtonSelect	, XINPUT_GAMEPAD_BACK },
+		{ enButtonStart		, XINPUT_GAMEPAD_START },
+		{ enButtonRB1		, XINPUT_GAMEPAD_RIGHT_SHOULDER },
+		{ enButtonRB2		, 0 },
+		{ enButtonRB3		, XINPUT_GAMEPAD_RIGHT_THUMB },
+		{ enButtonLB1		, XINPUT_GAMEPAD_LEFT_SHOULDER },
+		{ enButtonLB2		, 0 },
+		{ enButtonLB3		, XINPUT_GAMEPAD_LEFT_THUMB },
+		{ enGoForward,		0 },
+		{ enGoBack,		0 },
+		//{enTurnRight ,XINPUT_GAMEPAD_}
 		};
 		/*!
 		*@brief	仮想ボタンとキーボードとの関連付けを表す構造体。
@@ -43,23 +44,34 @@ namespace ZekeEngine {
 		};
 		const VirtualPadToKeyboard vPadToKeyboardTable[enButtonNum] = {
 			{ enButtonUp		, '8' },
-			{ enButtonDown		, '2' },
-			{ enButtonLeft		, '4' },
-			{ enButtonRight		, '6' },
-			{ enButtonA			, 'J' },
-			{ enButtonB			, 'K' },
-			{ enButtonY			, 'I' },
-			{ enButtonX			, 'L' },
-			{ enButtonSelect	, VK_SPACE },
-			{ enButtonStart		, VK_RETURN },
-			{ enButtonRB1		, '7' },
-			{ enButtonRB2		, '8' },
-			{ enButtonRB3		, '9' },
-			{ enButtonLB1		, 'B' },
-			{ enButtonLB2		, 'N' },
-			{ enButtonLB3		, 'M' },
-			{enGoForward		, 'W'},
-			{enGOBack			, 'S' },
+		{ enButtonDown		, '2' },
+		{ enButtonLeft		, '4' },
+		{ enButtonRight		, '6' },
+		{ enButtonA			, 'J' },
+		{ enButtonB			, 'K' },
+		{ enButtonY			, 'I' },
+		{ enButtonX			, 'L' },
+		{ enButtonSelect	, VK_SPACE },
+		{ enButtonStart		, VK_RETURN },
+		{ enButtonRB1		, '7' },
+		{ enButtonRB2		, '8' },
+		{ enButtonRB3		, '9' },
+		{ enButtonLB1		, 'B' },
+		{ enButtonLB2		, 'N' },
+		{ enButtonLB3		, 'M' },
+		//action
+		{ enGoForward		, 'W' },
+		{ enGoBack			, 'S' },
+		{ enTurnRight			, 'D' },
+		{ enTurnLeft			, 'A' },
+		{ enJump			, RI_MOUSE_RIGHT_BUTTON_DOWN },
+		{ enBoost			, RI_MOUSE_LEFT_BUTTON_DOWN },
+		{ enDrift			, VK_SHIFT },
+		{ enAirTrunRight			, 'E' },
+		{ enAirTurnLeft			, 'Q' },
+		{ enAirPitchUp			, 'S' },
+		{ enAirPitchDown			, 'W' },
+		{ enAirRoll			, VK_CONTROL },
 		};
 	}
 	CPad::CPad()
@@ -99,12 +111,12 @@ namespace ZekeEngine {
 			//go back
 			//左トリガー。
 			if (m_state.state.Gamepad.bLeftTrigger != 0) {
-				m_trigger[enGOBack] = 1 ^ m_press[enGOBack];
-				m_press[enGOBack] = 1;
+				m_trigger[enGoBack] = 1 ^ m_press[enGoBack];
+				m_press[enGoBack] = 1;
 			}
 			else {
-				m_trigger[enGOBack] = 0;
-				m_press[enGOBack] = 0;
+				m_trigger[enGoBack] = 0;
+				m_press[enGoBack] = 0;
 			}
 			//右トリガー
 			if (m_state.state.Gamepad.bRightTrigger != 0) {
@@ -124,6 +136,31 @@ namespace ZekeEngine {
 				m_trigger[enGoForward] = 0;
 				m_press[enGoForward] = 0;
 			}
+			//trigger
+			if ((m_state.state.Gamepad.bLeftTrigger < XINPUT_GAMEPAD_TRIGGER_THRESHOLD))
+			{
+				m_state.state.Gamepad.bLeftTrigger = 0;
+				m_lTrigger = 0.0f;
+			}
+			else {
+				//Left Trigger
+				if (m_state.state.Gamepad.bLeftTrigger > 0) {
+					m_lTrigger = static_cast<float>(m_state.state.Gamepad.bLeftTrigger) / 255;
+				}
+			}
+
+			if ((m_state.state.Gamepad.bRightTrigger < XINPUT_GAMEPAD_TRIGGER_THRESHOLD))
+			{
+				m_state.state.Gamepad.bRightTrigger = 0;
+				m_rTrigger = 0.0f;
+			}
+			else {
+				//Right Trigger
+				if (m_state.state.Gamepad.bRightTrigger > 0) {
+					m_rTrigger = static_cast<float>(m_state.state.Gamepad.bRightTrigger) / 255;
+				}
+			}
+			//
 			if ((m_state.state.Gamepad.sThumbLX < INPUT_DEADZONE &&
 				m_state.state.Gamepad.sThumbLX > -INPUT_DEADZONE) &&
 				(m_state.state.Gamepad.sThumbLY < INPUT_DEADZONE &&

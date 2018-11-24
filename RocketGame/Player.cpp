@@ -23,26 +23,20 @@ void Player::OnDestroy() {
 	DeleteGO(m_model);
 }
 
-//TODO : 前進などを仮想ボタンのようにして、キーコンフィグから動作変更できるようにする
 void Player::Update() {
 	Move();
 	Rotation();
 }
 
 void Player::Move() {
-	if (Pad(0).IsPress(enGoForward)) {
-		m_moveSpeed.x += 10.f;
-	}
-	else {
-		if (m_moveSpeed.x <= 0.f)
-			return;
-		m_moveSpeed.x -= 10.f;
-	}
-	if (Pad(0).IsPress(enGOBack)) {
-		m_moveSpeed.z += 10.f;
-	}
-	m_pos += m_moveSpeed;
-	m_model->SetPosition(m_pos);
+	float MOVE_SPEED = 2400.0f;
+	static float MOVE_SPEED_JUMP = 1000.0f;
+	float x = Pad(0).GetLStickXF();
+	float y = Pad(0).GetLStickYF();
+	float r = Pad(0).GetRTrigger();
+	float l = Pad(0).GetLTrigger();
+
+
 }
 
 void Player::Rotation() {

@@ -4,8 +4,8 @@
 namespace ZekeEngine {
 
 	/*!
-	 *@brief	仮想ボタン定義。
-	 */
+	*@brief	仮想ボタン定義。
+	*/
 	enum EnButton {
 		enButtonUp,		//!<上。
 		enButtonDown,		//!<下。
@@ -23,32 +23,42 @@ namespace ZekeEngine {
 		enButtonLB1,		//!<LB1ボタン。
 		enButtonLB2,		//!<LB2ボタン。
 		enButtonLB3,		//!<LB3ボタン。
-		//ここから動作の仮想ボタン
-		enGoForward,
-		enGOBack,
-		enButtonNum,	//!<ボタンの数。
+							//ここから動作の仮想ボタン
+							enGoForward,
+							enGoBack,
+							enTurnRight,
+							enTurnLeft,
+							enJump,
+							enBoost,
+							enDrift,
+							enAirTrunRight,
+							enAirTurnLeft,
+							enAirPitchUp,
+							enAirPitchDown,
+							enAirRoll,
+							enButtonNum,	//!<ボタンの数。
 	};
 	/*!
-	 *@brief	パッド
-	 */
+	*@brief	パッド
+	*/
 	class CPad : Noncopyable {
 	public:
 		static const int CONNECT_PAD_MAX = 4;		//接続可能なパッドの最大数。
-		/*!
-		 *@brief	パッドステート。
-		 */
+													/*!
+													*@brief	パッドステート。
+													*/
 		struct PAD_STATE
 		{
 			XINPUT_STATE state;
 			bool bConnected;
 		};
 		/*!
-		 *@brief	コンストラクタ。
-		 */
+		*@brief	コンストラクタ。
+		*/
 		CPad();
 		/*!
-		 *@brief	デストラクタ。
-		 */
+		*@brief	デストラクタ。
+		*/
 		~CPad();
 		/*!
 		*@brief	初期化。
@@ -63,18 +73,18 @@ namespace ZekeEngine {
 		*/
 		void Update();
 		/*!
-		 *@brief	ボタンのトリガー判定。
-		 *@return	trueが返ってきたらトリガー入力。
-		 */
+		*@brief	ボタンのトリガー判定。
+		*@return	trueが返ってきたらトリガー入力。
+		*/
 		bool IsTrigger(EnButton button) const
 		{
 			//TK_ASSERT(button < enButtonNum, "button is invalid");
 			return m_trigger[button] != 0;
 		}
 		/*!
-		 *@brief	ボタンが押されているか判定。
-		 *@return	trueが返ってきたら押されている。
-		 */
+		*@brief	ボタンが押されているか判定。
+		*@return	trueが返ってきたら押されている。
+		*/
 		bool IsPress(EnButton button) const
 		{
 			//TK_ASSERT(button < enButtonNum, "button is invalid");
@@ -135,6 +145,13 @@ namespace ZekeEngine {
 		{
 			return m_rStickY;
 		}
+
+		float GetRTrigger() const {
+			return m_rTrigger;
+		}
+		float GetLTrigger() const {
+			return m_lTrigger;
+		}
 	private:
 		PAD_STATE m_state;	//!<パッドステート。
 		int m_padNo = 0;			//!<パッド番号。
@@ -144,5 +161,7 @@ namespace ZekeEngine {
 		float m_lStickY = 0.0f;		//!<左スティックのY軸の入力量。
 		float m_rStickX = 0.0f;		//!<右スティックのX軸の入力量。
 		float m_rStickY = 0.0f;		//!<右スティックのY軸の入力量。
+		float m_rTrigger = 0.0f;
+		float m_lTrigger = 0.0f;
 	};
 }
