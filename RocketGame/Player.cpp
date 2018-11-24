@@ -29,14 +29,25 @@ void Player::Update() {
 }
 
 void Player::Move() {
-	float MOVE_SPEED = 2400.0f;
-	static float MOVE_SPEED_JUMP = 1000.0f;
+	float MOVE_SPEED = 50.0f;
+	static float MOVE_SPEED_JUMP = 30.0f;
 	float x = Pad(0).GetLStickXF();
 	float y = Pad(0).GetLStickYF();
 	float r = Pad(0).GetRTrigger();
 	float l = Pad(0).GetLTrigger();
 
+	CVector3 accVec = MainCamera().GetForward();
+	accVec *= r * MOVE_SPEED * GameTime().GetFrameDeltaTime();
+	accVec.y = 0.f;
 
+	CVector3 friction = m_moveSpeed;
+	friction *= -1.0f;
+	m_moveSpeed.x += friction.x * GameTime().GetFrameDeltaTime();
+	m_moveSpeed.z += friction.z * GameTime().GetFrameDeltaTime();
+	//‰Á‘¬“x‚ð‰Á‚¦‚éB
+	m_moveSpeed += accVec;
+	m_pos += m_moveSpeed;
+	m_model->SetPosition(m_pos);
 }
 
 void Player::Rotation() {
