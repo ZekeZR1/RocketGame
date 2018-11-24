@@ -20,6 +20,7 @@ private:
 	SkinModelRender* m_model;
 	CVector3 m_pos = CVector3::Zero();
 	CVector3 m_moveSpeed = CVector3::Zero();
+	CVector3 accVec = CVector3::One();
 	CQuaternion m_rot = CQuaternion::Identity();
 };
 

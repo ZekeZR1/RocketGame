@@ -14,8 +14,6 @@ Player::~Player()
 bool Player::Start() {
 	m_model = NewGO<SkinModelRender>(0, "octane");
 	m_model->Init(L"Assets/modelData/Octane.cmo", nullptr, 0, enFbxUpAxisY);
-	m_rot.SetRotationDeg(CVector3::AxisY(), 90.f);
-	m_model->SetRotation(m_rot);
 	return true;
 }
 
@@ -35,13 +33,18 @@ void Player::Move() {
 	float y = Pad(0).GetLStickYF();
 	float r = Pad(0).GetRTrigger();
 	float l = Pad(0).GetLTrigger();
-
-	CVector3 accVec = MainCamera().GetForward();
+	//‰ñ‚·‚æ
+	CQuaternion qRot;
+	qRot.SetRotationDeg(CVector3::AxisY(), 2.0f * x);
+	m_rot.Multiply(qRot);
+	//m_model->SetRotation(m_rot);
+	//Šµ«
+	accVec = CVector3::One();
 	accVec *= r * MOVE_SPEED * GameTime().GetFrameDeltaTime();
 	accVec.y = 0.f;
-
+	m_rot.Multiply(accVec);
 	CVector3 friction = m_moveSpeed;
-	friction *= -1.0f;
+	friction *= -1.5f;
 	m_moveSpeed.x += friction.x * GameTime().GetFrameDeltaTime();
 	m_moveSpeed.z += friction.z * GameTime().GetFrameDeltaTime();
 	//‰Á‘¬“x‚ð‰Á‚¦‚éB
@@ -56,6 +59,7 @@ void Player::Rotation() {
 		return;
 	}
 	float angle = atan2(m_moveSpeed.x, m_moveSpeed.z);
-	m_rot.SetRotation(CVector3::AxisY(), angle);
-	m_model->SetRotation(m_rot);
+	CQuaternion nRot;
+	nRot.SetRotation(CVector3::AxisY(), angle);
+	m_model->SetRotation(nRot);
 }
