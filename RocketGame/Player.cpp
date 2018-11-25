@@ -47,10 +47,15 @@ void Player::Move() {
 	friction *= -1.5f;
 	m_moveSpeed.x += friction.x * GameTime().GetFrameDeltaTime();
 	m_moveSpeed.z += friction.z * GameTime().GetFrameDeltaTime();
+
 	//‰Á‘¬“x‚ð‰Á‚¦‚éB
 	m_moveSpeed += accVec;
 	m_pos += m_moveSpeed;
 	m_model->SetPosition(m_pos);
+
+	char message[256];
+	sprintf_s(message, "x...%f z...%f\n", fabsf(m_moveSpeed.x), fabsf(m_moveSpeed.z));
+	OutputDebugStringA(message);
 }
 
 void Player::Rotation() {
@@ -61,5 +66,8 @@ void Player::Rotation() {
 	float angle = atan2(m_moveSpeed.x, m_moveSpeed.z);
 	CQuaternion nRot;
 	nRot.SetRotation(CVector3::AxisY(), angle);
+	CQuaternion aRot;
+	aRot.SetRotationDeg(CVector3::AxisY(),180.f);
+	nRot.Multiply(aRot);
 	m_model->SetRotation(nRot);
 }
