@@ -160,6 +160,7 @@
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\Octane.FBX" />
     <MeshContentTask Include="Assets\modelData\Stage.FBX" />
+    <MeshContentTask Include="Assets\modelData\Tofu.FBX" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
