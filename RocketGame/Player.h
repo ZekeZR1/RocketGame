@@ -20,7 +20,9 @@ private:
 	SkinModelRender* m_model;
 	CVector3 m_pos = CVector3::Zero();
 	CVector3 m_moveSpeed = CVector3::Zero();
+	CVector3 m_boostVec = CVector3::Zero();
 	CVector3 m_forward;
+	CVector3 m_right;
 	CQuaternion m_rot = CQuaternion::Identity();
 	const float m_frictionParam = -1.0;
 	float m_boostParam = 1.5f;

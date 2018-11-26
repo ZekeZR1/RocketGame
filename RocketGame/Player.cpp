@@ -18,7 +18,9 @@ bool Player::Start() {
 	sRot.SetRotationDeg(CVector3::AxisY(), 45.f + 180.f);
 	m_model->SetRotation(sRot);
 	m_forward = MainCamera().GetForward();
+	m_right = MainCamera().GetRight();
 	sRot.Multiply(m_forward);
+	sRot.Multiply(m_right);
 	return true;
 }
 
@@ -37,7 +39,8 @@ void Player::Move() {
 
 	float MOVE_SPEED = 50.0f;
 	static float MOVE_SPEED_JUMP = 30.0f;
-	float minSpeed = 1.3f;
+	//float minSpeed = 1.3f;
+	float minSpeed = 0.f;
 	float x = Pad(0).GetLStickXF();
 	float y = Pad(0).GetLStickYF();
 	float r = Pad(0).GetRTrigger();
@@ -57,8 +60,9 @@ void Player::Move() {
 	}
 	m_rot.Multiply(qRot);
 	m_rot.Multiply(accVec);
-	//車の前方向を保持しておく
+	//車の前と右方向を保持しておく
 	qRot.Multiply(m_forward);
+	qRot.Multiply(m_right);
 	//前方向と加速ベクトルを加算する
 	CVector3 toPos;
 	toPos = accVec;
@@ -73,9 +77,22 @@ void Player::Move() {
 	//モデルを加速ベクトルの向きに向かせる(Rotationでやるわ)
 	
 	//BoostTest
+	CQuaternion bRot;
+	m_boostVec = m_forward;
+	bRot.SetRotationDeg(m_right, 10.0f * y);
+	bRot.Multiply(m_boostVec);
 	if (Pad(0).IsPress(enButtonB)) {
-		m_moveSpeed += m_forward * m_boostParam;
+		m_moveSpeed += m_boostVec * m_boostParam;
 	}
+	else {
+		//ブーストによる加速は無くなるよ
+		m_boostVec = CVector3::Zero();
+	}
+	//回転テスト
+	if (Pad(0).IsPress(enButtonRight)) {
+		m_moveSpeed += m_right;
+	}
+	//
 	//モデルの座標に移動ベクトルを加算する
 	qRot.Multiply(m_moveSpeed);
 	m_pos += m_moveSpeed;
@@ -89,8 +106,15 @@ void Player::Rotation() {
 		&& fabsf(m_moveSpeed.z) < 0.001f) {
 		return;
 	}
+	//移動ベクトルとは別のモデル自体の回転情報
 	CQuaternion nRot = m_rot;
 	nRot.SetRotationDeg(CVector3::AxisY(), 45.f + 180.f);
 	nRot.Multiply(m_rot);
+	float angle;
+	//CQuaternion yRot;
+	//angle = atan2(m_moveSpeed.y, m_forward.x + m_forward.z);
+	//yRot.SetRotation(m_right, angle);
+	//nRot.Multiply(yRot);
+	//nRot.Multiply(m_rRot);
 	m_model->SetRotation(nRot);
 }
