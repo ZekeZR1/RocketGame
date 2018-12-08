@@ -75,7 +75,7 @@
     <LibraryPath>$(VC_IncludePath);$(WindowsSDK_LibraryPath_x64);$(VC_LibraryPath_VC_x64_OneCore);$(WindowsSdkDir)/Lib/10.0.16299.0/ucrt/x64;$(ProjectDir)ZekeEngine/ZekeEngine/x64/Debug;$(VC_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
     <IncludePath>$(ProjectDir);$(ProjectDir)/../;$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Users\Zeke\source\repos\RocketGame\RocketGame\ZekeEngine\ZekeEngine\policy</IncludePath>
-    <ReferencePath>C:\Users\Zeke\source\repos\RocketGame\RocketGame\ZekeEngine\ZekeEngine\x64\Debug;$(ReferencePath)</ReferencePath>
+    <ReferencePath>C:\Users\Zeke\source\repos\RocketGame\RocketGame\ZekeEngine\ZekeEngine\x64\Debug;C:\Users\Zeke\git\RocketGame\RocketGame\ZekeEngine\ZekeEngine\bulletPhysics\src\BulletCollision\x64\Debug;C:\Users\Zeke\git\RocketGame\RocketGame\ZekeEngine\ZekeEngine\bulletPhysics\src\BulletDynamics\x64\Debug;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

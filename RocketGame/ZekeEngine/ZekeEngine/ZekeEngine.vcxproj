@@ -77,8 +77,8 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>.\x64\Debug</OutDir>
     <IncludePath>$(ProjectDir);$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)exlib;C:\Users\Zeke\source\repos\RocketGame\RocketGame\ZekeEngine\ZekeEngine\x64\Debug;$(LibraryPath)</LibraryPath>
-    <ReferencePath>C:\Users\Zeke\source\repos\RocketGame\RocketGame\ZekeEngine\ZekeEngine\x64\Debug;$(ReferencePath)</ReferencePath>
+    <LibraryPath>$(ProjectDir)exlib;C:\Users\Zeke\source\repos\RocketGame\RocketGame\ZekeEngine\ZekeEngine\x64\Debug;C:\Users\Zeke\git\RocketGame\RocketGame\ZekeEngine\ZekeEngine\exlib;$(LibraryPath)</LibraryPath>
+    <ReferencePath>C:\Users\Zeke\source\repos\RocketGame\RocketGame\ZekeEngine\ZekeEngine\x64\Debug;C:\Users\Zeke\git\RocketGame\RocketGame\ZekeEngine\ZekeEngine\bulletPhysics\src\BulletCollision\x64\Debug;C:\Users\Zeke\git\RocketGame\RocketGame\ZekeEngine\ZekeEngine\bulletPhysics\src\BulletDynamics\x64\Debug;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -189,6 +189,15 @@
     <ClInclude Include="math\kMath.h" />
     <ClInclude Include="math\Matrix.h" />
     <ClInclude Include="math\Vector.h" />
+    <ClInclude Include="physics\CapsuleCollider.h" />
+    <ClInclude Include="physics\CollisionAttr.h" />
+    <ClInclude Include="physics\CSphereCollider.h" />
+    <ClInclude Include="physics\ICollider.h" />
+    <ClInclude Include="physics\MeshCollider.h" />
+    <ClInclude Include="physics\Physics.h" />
+    <ClInclude Include="physics\PhysicsStaticObject.h" />
+    <ClInclude Include="physics\RigitBody.h" />
+    <ClInclude Include="physics\SpriteBoxCollider.h" />
     <ClInclude Include="policy\Noncopyable.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -229,6 +238,13 @@
     <ClCompile Include="math\kMath.cpp" />
     <ClCompile Include="math\Matrix.cpp" />
     <ClCompile Include="math\Vector.cpp" />
+    <ClCompile Include="physics\CapsuleCollider.cpp" />
+    <ClCompile Include="physics\CSphereCollider.cpp" />
+    <ClCompile Include="physics\MeshCollider.cpp" />
+    <ClCompile Include="physics\Physics.cpp" />
+    <ClCompile Include="physics\PhysicsStaticObject.cpp" />
+    <ClCompile Include="physics\RigitBody.cpp" />
+    <ClCompile Include="physics\SpriteBoxCollider.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -239,6 +255,14 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ZekeEngine.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="bulletPhysics\src\BulletCollision\BulletCollision.vcxproj">
+      <Project>{28ef574a-84db-3cb0-9b45-db3545b2d05c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="bulletPhysics\src\BulletDynamics\BulletDynamics.vcxproj">
+      <Project>{9bf1adf3-eb57-35e8-b156-ade8ffc7e2f0}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

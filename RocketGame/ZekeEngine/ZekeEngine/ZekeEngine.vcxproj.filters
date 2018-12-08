@@ -119,6 +119,33 @@
     <ClInclude Include="graphics\CVertexBuffer.h">
       <Filter>Source\graphics</Filter>
     </ClInclude>
+    <ClInclude Include="physics\MeshCollider.h">
+      <Filter>Source\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="physics\Physics.h">
+      <Filter>Source\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="physics\PhysicsStaticObject.h">
+      <Filter>Source\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="physics\RigitBody.h">
+      <Filter>Source\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="physics\SpriteBoxCollider.h">
+      <Filter>Source\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="physics\CapsuleCollider.h">
+      <Filter>Source\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="physics\CollisionAttr.h">
+      <Filter>Source\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="physics\CSphereCollider.h">
+      <Filter>Source\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="physics\ICollider.h">
+      <Filter>Source\physics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source">
@@ -156,6 +183,9 @@
     </Filter>
     <Filter Include="Source\graphics\GPUBuffer">
       <UniqueIdentifier>{e42414c9-6271-498c-83ce-b6fb7110e54d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\physics">
+      <UniqueIdentifier>{51bbff42-d6fb-484a-95b8-ae3a6ba41b64}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -260,6 +290,27 @@
     </ClCompile>
     <ClCompile Include="graphics\CVertexBuffer.cpp">
       <Filter>Source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="physics\Physics.cpp">
+      <Filter>Source\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="physics\PhysicsStaticObject.cpp">
+      <Filter>Source\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="physics\RigitBody.cpp">
+      <Filter>Source\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="physics\SpriteBoxCollider.cpp">
+      <Filter>Source\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="physics\CapsuleCollider.cpp">
+      <Filter>Source\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="physics\CSphereCollider.cpp">
+      <Filter>Source\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="physics\MeshCollider.cpp">
+      <Filter>Source\physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
