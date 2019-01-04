@@ -40,6 +40,10 @@ namespace ZekeEngine {
 			return m_graphicsEngine;
 		}
 
+		CSaveSystem& GetSaveSystem() {
+			return m_saveSystem;
+		}
+
 		PhysicsWorld& GetPhysicsWorld() {
 			return m_physicsWorld;
 		}
@@ -65,6 +69,7 @@ namespace ZekeEngine {
 		int							m_screenHeight = 0;				//スクリーンの高さ
 		CGraphicsEngine		m_graphicsEngine;					//グラフィックエンジン
 		PhysicsWorld			m_physicsWorld;						//物理ワールド
+		CSaveSystem				m_saveSystem;							//セーブデータ管理クラス
 		CPad						m_pad[CPad::CONNECT_PAD_MAX];
 	};
 	static inline CEngine& Engine()
@@ -74,6 +79,11 @@ namespace ZekeEngine {
 	static inline CGraphicsEngine& GraphicsEngine() {
 		return Engine().GetGraphicsEngine();
 	}
+
+	static inline CSaveSystem& SaveSystem() {
+		return Engine().GetSaveSystem();
+	}
+
 	static inline Camera& MainCamera() {
 		return GraphicsEngine().GetMainCamera();
 	}

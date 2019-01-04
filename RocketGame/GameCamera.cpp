@@ -12,6 +12,11 @@ GameCamera::~GameCamera()
 }
 
 bool GameCamera::Start() {
+	SaveSystem().Load();
+	CSaveSystem::SCameraData data = SaveSystem().GetGameCameraData();
+	m_distanceToTarget = data.distanceToTarget;
+	m_toCameraPos.z = m_distanceToTarget;
+	m_cameraRotationSpeed = data.cameraRotationSpeed;
 	return true;
 }
 
