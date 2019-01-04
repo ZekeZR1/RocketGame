@@ -23,6 +23,9 @@
     <Filter Include="ソース ファイル\menu">
       <UniqueIdentifier>{81ef5d96-6d9e-4615-9e67-2fc8cd79cd02}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\save">
+      <UniqueIdentifier>{a8098dbd-93d6-48bb-b431-5351a96bf0bb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -46,6 +49,9 @@
     <ClCompile Include="menu\CPause.cpp">
       <Filter>ソース ファイル\menu</Filter>
     </ClCompile>
+    <ClCompile Include="save\SaveSystem.cpp">
+      <Filter>ソース ファイル\save</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -68,6 +74,9 @@
     </ClInclude>
     <ClInclude Include="menu\CPause.h">
       <Filter>ソース ファイル\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="save\SaveSystem.h">
+      <Filter>ソース ファイル\save</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

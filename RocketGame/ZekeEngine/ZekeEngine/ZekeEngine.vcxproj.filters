@@ -146,9 +146,6 @@
     <ClInclude Include="physics\ICollider.h">
       <Filter>Source\physics</Filter>
     </ClInclude>
-    <ClInclude Include="save\SaveSystem.h">
-      <Filter>Source\save</Filter>
-    </ClInclude>
     <ClInclude Include="debug\OutputConsole.h">
       <Filter>Source\debug</Filter>
     </ClInclude>
@@ -192,9 +189,6 @@
     </Filter>
     <Filter Include="Source\physics">
       <UniqueIdentifier>{51bbff42-d6fb-484a-95b8-ae3a6ba41b64}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\save">
-      <UniqueIdentifier>{d35a8e86-9181-4f62-b9ea-0cf7a1f3f737}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\debug">
       <UniqueIdentifier>{3898e72b-3af0-4a3c-870a-243a317bb33c}</UniqueIdentifier>
@@ -323,9 +317,6 @@
     </ClCompile>
     <ClCompile Include="physics\MeshCollider.cpp">
       <Filter>Source\physics</Filter>
-    </ClCompile>
-    <ClCompile Include="save\SaveSystem.cpp">
-      <Filter>Source\save</Filter>
     </ClCompile>
     <ClCompile Include="debug\OutputConsole.cpp">
       <Filter>Source\debug</Filter>

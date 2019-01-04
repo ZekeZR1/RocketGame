@@ -6,7 +6,6 @@
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/foreach.hpp>
 #include <boost/optional.hpp>
-#include "../debug/OutputConsole.h"
 
 using namespace boost::property_tree;
 

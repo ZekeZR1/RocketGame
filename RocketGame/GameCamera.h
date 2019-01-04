@@ -1,4 +1,7 @@
 #pragma once
+
+#include "save/SaveSystem.h"
+
 class GameCamera :  public GameObject
 {
 public:
