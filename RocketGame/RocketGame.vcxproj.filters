@@ -20,6 +20,9 @@
     <Filter Include="ソース ファイル\scene">
       <UniqueIdentifier>{86c29054-3cba-4562-8003-9162a18a9d79}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\menu">
+      <UniqueIdentifier>{81ef5d96-6d9e-4615-9e67-2fc8cd79cd02}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -34,8 +37,14 @@
     <ClCompile Include="Player.cpp">
       <Filter>ソース ファイル\player</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
+    <ClCompile Include="scene\Game.cpp">
       <Filter>ソース ファイル\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="menu\COptions.cpp">
+      <Filter>ソース ファイル\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="menu\CPause.cpp">
+      <Filter>ソース ファイル\menu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -51,8 +60,14 @@
     <ClInclude Include="Player.h">
       <Filter>ソース ファイル\player</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
+    <ClInclude Include="scene\Game.h">
       <Filter>ソース ファイル\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="menu\COptions.h">
+      <Filter>ソース ファイル\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="menu\CPause.h">
+      <Filter>ソース ファイル\menu</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -3,6 +3,7 @@
 #include "Stage.h"
 #include "Game.h"
 #include "GameCamera.h"
+#include "../menu/CPause.h"
 
 Game::Game()
 {
@@ -27,15 +28,9 @@ void Game::OnDestroy() {
 }
 
 void Game::Update(){
-	if (Pad(0).IsTrigger(enButtonA)) {
-		SaveSystem().Save();
+	if (Pad(0).IsTrigger(enButtonStart)) {
+		//Pause
 	}
-	//{
-	//	char message[256];
-	//	auto ver = BOOST_LIB_VERSION;
-	//	sprintf_s(message, "%s\n", ver);
-	//	OutputDebugStringA(message);
-	//}
 }
 
 void Game::Render() {

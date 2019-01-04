@@ -11,12 +11,19 @@ namespace ZekeEngine{
 			float cameraHeight;
 			float cameraRotationSpeed;
 		};
-		void Load();
-		void Save();
+
+		void SetGameCameraData(SCameraData data) {
+			m_cameraData = data;
+			Save();
+		}
+
 		SCameraData GetGameCameraData() {
+			Load();
 			return m_cameraData;
 		}
 	private:
+		void Load();
+		void Save();
 		SCameraData m_cameraData;
 	};
 }

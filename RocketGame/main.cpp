@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "Game.h"
+#include "scene\Game.h"
 
 
 int WINAPI wWinMain(

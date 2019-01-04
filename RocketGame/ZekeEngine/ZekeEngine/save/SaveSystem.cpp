@@ -20,8 +20,9 @@ CSaveSystem::~CSaveSystem()
 {
 }
 
+//TODO : filepath struct Data
 void CSaveSystem::Load() {
-	//とりあえずゲームカメラのdataロードをするテスト関数
+	//ゲームカメラのdataロード
 	ptree pt;
 	read_json("Assets/saveData/PlayerOptionData.json", pt);
 	//視野角
@@ -57,13 +58,13 @@ void CSaveSystem::Load() {
 void CSaveSystem::Save() {
 	ptree pt;
 	//視野角
-	pt.put("GameCameraData.viewAngle", 0);
+	pt.put("GameCameraData.viewAngle", m_cameraData.viewAngle);
 	//距離
-	pt.put("GameCameraData.distanceToTarget", 300);
+	pt.put("GameCameraData.distanceToTarget", m_cameraData.distanceToTarget);
 	//高度
-	pt.put("GameCameraData.cameraHeight", 50);
+	pt.put("GameCameraData.cameraHeight", m_cameraData.cameraHeight);
 	//回転速度
-	pt.put("GameCameraData.cameraRotationSpeed", 5);
+	pt.put("GameCameraData.cameraRotationSpeed", m_cameraData.cameraRotationSpeed);
 
 	write_json("Assets/saveData/PlayerOptionData.json", pt);
 }

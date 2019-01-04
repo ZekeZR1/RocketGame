@@ -136,16 +136,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameCamera.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="menu\COptions.cpp" />
+    <ClCompile Include="menu\CPause.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="scene\Game.cpp" />
     <ClCompile Include="Stage.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h" />
     <ClInclude Include="GameCamera.h" />
+    <ClInclude Include="menu\COptions.h" />
+    <ClInclude Include="menu\CPause.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="scene\Game.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
