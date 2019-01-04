@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Game.h"
 
+
 int WINAPI wWinMain(
 	HINSTANCE hInstance,
 	HINSTANCE hPrevInstance,

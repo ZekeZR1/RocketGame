@@ -3,6 +3,7 @@
 #include "Stage.h"
 #include "Game.h"
 #include "GameCamera.h"
+#include <boost/version.hpp>
 
 Game::Game()
 {
@@ -27,6 +28,18 @@ void Game::OnDestroy() {
 }
 
 void Game::Update(){
+	//{
+	//	char message[256];
+	//	int ver = BOOST_VERSION;
+	//	sprintf_s(message, "%d\n", ver);
+	//	OutputDebugStringA(message);
+	//}
+	//{
+	//	char message[256];
+	//	auto ver = BOOST_LIB_VERSION;
+	//	sprintf_s(message, "%s\n", ver);
+	//	OutputDebugStringA(message);
+	//}
 }
 
 void Game::Render() {

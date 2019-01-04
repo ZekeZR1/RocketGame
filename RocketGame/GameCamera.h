@@ -15,6 +15,7 @@ public:
 	}
 private:
 	//TODO : ‹–ìŠp‚à—~‚µ‚¢‚Æ‚±‚ë
+	//TODO : json‚ÉƒZ[ƒu‚µ‚Ä‚ ‚éİ’è‚ğ“Ç‚İ‚Ş‚æ‚¤‚É‚·‚é
 	const float m_distanceMoveParam = 50.f;
 	const float m_raiseViewPoint = 20.f;
 	const float m_maxDistance = 650.f;
