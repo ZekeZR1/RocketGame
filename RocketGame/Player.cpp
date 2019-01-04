@@ -74,7 +74,7 @@ void Player::Movef() {
 
 	//Boost
 	if (Pad(0).IsPress(enButtonB)) {
-		m_pos += forward;
+		m_pos += forward * m_boostParam;
 	}
 	//Set
 	m_pos += m_moveSpeed;
