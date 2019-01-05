@@ -19,7 +19,6 @@ CSaveSystem::~CSaveSystem()
 {
 }
 
-//TODO : filepath struct Data
 void CSaveSystem::Load() {
 	//ゲームカメラのdataロード
 	ptree pt;

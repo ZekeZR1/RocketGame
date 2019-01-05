@@ -72,8 +72,8 @@ void CEngine::Update() {
 	for (auto& pad : m_pad) {
 		pad.Update();
 	}
-	IGameObjectManager().Execute();
 	m_physicsWorld.Update();
+	IGameObjectManager().Execute();
 }
 
 bool CEngine::InitWindow(const EngineParam& engineParam) {

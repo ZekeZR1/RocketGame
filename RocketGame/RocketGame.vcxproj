@@ -97,7 +97,7 @@
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(ProjectDir)ZekeEngine/ZekeEngine/exlib;$(ProjectDir)ZekeEngine\x64\Debug;C:\boost_1_69_0\stage\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>ZekeEngine.lib;d3d11.lib;d3dcompiler.lib;xinput.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ZekeEngine.lib;d3d11.lib;d3dcompiler.lib;xinput.lib;BulletCollision_Debug.lib;BulletDynamics_Debug.lib;LinearMath_Debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>
     <MeshContentTask>

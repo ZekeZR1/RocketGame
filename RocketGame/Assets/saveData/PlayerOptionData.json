@@ -1,7 +1,7 @@
 {
     "GameCameraData": {
         "viewAngle": "0",
-        "distanceToTarget": "650",
+        "distanceToTarget": "350",
         "cameraHeight": "50",
         "cameraRotationSpeed": "2"
     }

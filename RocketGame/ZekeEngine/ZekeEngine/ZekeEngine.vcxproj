@@ -158,6 +158,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CEngine.h" />
+    <ClInclude Include="character\CharacterController.h" />
     <ClInclude Include="debug\OutputConsole.h" />
     <ClInclude Include="EngineStruct.h" />
     <ClInclude Include="gameObject\CTransform.h" />
@@ -210,6 +211,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CEngine.cpp" />
+    <ClCompile Include="character\CharacterController.cpp" />
     <ClCompile Include="debug\OutputConsole.cpp" />
     <ClCompile Include="gameObject\CTransform.cpp" />
     <ClCompile Include="gameObject\GameObject.cpp" />

@@ -149,6 +149,9 @@
     <ClInclude Include="debug\OutputConsole.h">
       <Filter>Source\debug</Filter>
     </ClInclude>
+    <ClInclude Include="character\CharacterController.h">
+      <Filter>Source\physics\character</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source">
@@ -192,6 +195,9 @@
     </Filter>
     <Filter Include="Source\debug">
       <UniqueIdentifier>{3898e72b-3af0-4a3c-870a-243a317bb33c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\physics\character">
+      <UniqueIdentifier>{ea7f4fa7-d569-4444-a647-16cbbd140559}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -320,6 +326,9 @@
     </ClCompile>
     <ClCompile Include="debug\OutputConsole.cpp">
       <Filter>Source\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="character\CharacterController.cpp">
+      <Filter>Source\physics\character</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

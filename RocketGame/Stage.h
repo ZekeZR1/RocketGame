@@ -10,5 +10,6 @@ private:
 	SkinModelRender* m_model;
 	CVector3 m_pos = CVector3::Zero();
 	CQuaternion m_rot = CQuaternion::Identity();
+	PhysicsStaticObject m_physicsStaticObject;
 };
 

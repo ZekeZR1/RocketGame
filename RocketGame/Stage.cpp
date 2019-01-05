@@ -4,11 +4,13 @@
 
 Stage::Stage()
 {
+
 }
 
 
 Stage::~Stage()
 {
+	DeleteGO(m_model);
 }
 
 bool Stage::Start() {
@@ -17,6 +19,7 @@ bool Stage::Start() {
 	m_model->SetPosition(m_pos);
 	m_rot.SetRotationDeg(CVector3::AxisY(), 90.f);
 	m_model->SetRotation(m_rot);
+	m_physicsStaticObject.CreateMeshObject(m_model->GetSkinModel(), m_pos, m_rot);
 	return true;
 }
 

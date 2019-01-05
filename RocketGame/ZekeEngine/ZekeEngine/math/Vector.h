@@ -115,11 +115,11 @@ namespace ZekeEngine {
 			Set(_v.x, _v.y, _v.z);
 		}
 
-		/*template<>
+		template<>
 		void Set(btVector3& _v)
 		{
 			Set(_v.x(), _v.y(), _v.z());
-		}*/
+		}
 
 		/*!
 		* @brief	ベクトルを加算。
