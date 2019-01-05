@@ -32,6 +32,7 @@ bool CEngine::Init(const EngineParam& engineParam) {
 	IGameObjectManager().Init(32);
 	//TODO :各エンジン初期化
 	// : 物理エンジン初期化
+	m_physicsWorld.Init();
 	// : サウンドエンジン初期化
 	// : エフェクトエンジン初期化
 	// : 入力デバイスを初期化
@@ -48,6 +49,7 @@ bool CEngine::Init(const EngineParam& engineParam) {
 
 void CEngine::Final() {
 	m_graphicsEngine.Release();
+	m_physicsWorld.Release();
 }
 
 void CEngine::GameRoop() {
@@ -71,6 +73,7 @@ void CEngine::Update() {
 		pad.Update();
 	}
 	IGameObjectManager().Execute();
+	m_physicsWorld.Update();
 }
 
 bool CEngine::InitWindow(const EngineParam& engineParam) {

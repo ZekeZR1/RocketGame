@@ -39,6 +39,12 @@ namespace ZekeEngine {
 		{
 			return m_graphicsEngine;
 		}
+
+
+		PhysicsWorld& GetPhysicsWorld() {
+			return m_physicsWorld;
+		}
+
 		/*!
 	* @brief	ゲームパッドの取得。
 	*@param[in]	padNo	パッド番号
@@ -59,6 +65,7 @@ namespace ZekeEngine {
 		int							m_screenWidth = 0;				//スクリーンの幅
 		int							m_screenHeight = 0;				//スクリーンの高さ
 		CGraphicsEngine		m_graphicsEngine;					//グラフィックエンジン
+		PhysicsWorld			m_physicsWorld;						//物理ワールド
 		CPad						m_pad[CPad::CONNECT_PAD_MAX];
 	};
 	static inline CEngine& Engine()
@@ -68,6 +75,7 @@ namespace ZekeEngine {
 	static inline CGraphicsEngine& GraphicsEngine() {
 		return Engine().GetGraphicsEngine();
 	}
+
 	static inline Camera& MainCamera() {
 		return GraphicsEngine().GetMainCamera();
 	}

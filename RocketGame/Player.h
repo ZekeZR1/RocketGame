@@ -11,14 +11,14 @@ public:
 	void Movef();
 	void Rotation();
 public:
-	CVector3 GetPosition(){
+	CVector3 GetPosition() {
 		return m_pos;
 	}
 	CQuaternion GetRotation() {
 		return m_rot;
 	}
 private:
-	SkinModelRender* m_model;
+	SkinModelRender * m_model;
 	CVector3 m_pos = CVector3::Zero();
 	CVector3 m_moveSpeed = CVector3::Zero();
 	CVector3 m_forward;
@@ -26,6 +26,5 @@ private:
 	CVector3 m_up;
 	CQuaternion m_rot = CQuaternion::Identity();
 	const float m_frictionParam = -1.0;
-	float m_boostParam = 1.5f;
+	float m_boostParam = 10.0f;
 };
-

@@ -17,12 +17,18 @@
     <Filter Include="ソース ファイル\player">
       <UniqueIdentifier>{b52e1a05-e5e9-408b-ba03-5f0aa615d3b9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\scene">
+      <UniqueIdentifier>{86c29054-3cba-4562-8003-9162a18a9d79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\menu">
+      <UniqueIdentifier>{81ef5d96-6d9e-4615-9e67-2fc8cd79cd02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\save">
+      <UniqueIdentifier>{a8098dbd-93d6-48bb-b431-5351a96bf0bb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="GameCamera.cpp">
@@ -34,12 +40,21 @@
     <ClCompile Include="Player.cpp">
       <Filter>ソース ファイル\player</Filter>
     </ClCompile>
+    <ClCompile Include="scene\Game.cpp">
+      <Filter>ソース ファイル\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="menu\COptions.cpp">
+      <Filter>ソース ファイル\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="menu\CPause.cpp">
+      <Filter>ソース ファイル\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="save\SaveSystem.cpp">
+      <Filter>ソース ファイル\save</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="GameCamera.h">
@@ -50,6 +65,18 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>ソース ファイル\player</Filter>
+    </ClInclude>
+    <ClInclude Include="scene\Game.h">
+      <Filter>ソース ファイル\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="menu\COptions.h">
+      <Filter>ソース ファイル\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="menu\CPause.h">
+      <Filter>ソース ファイル\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="save\SaveSystem.h">
+      <Filter>ソース ファイル\save</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

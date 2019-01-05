@@ -623,6 +623,14 @@ namespace ZekeEngine {
 		result.Scale(s);
 		return result;
 	}
+	template<class TVector>
+	static inline TVector operator*(float s, const TVector& v)
+	{
+		TVector result;
+		result = v;
+		result.Scale(s);
+		return result;
+	}
 	/*!
 	*@brief	ベクトルの除算。
 	*/

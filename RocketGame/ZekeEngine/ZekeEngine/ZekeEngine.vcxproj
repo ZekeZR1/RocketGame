@@ -77,8 +77,8 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>.\x64\Debug</OutDir>
     <IncludePath>$(ProjectDir);$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)exlib;C:\Users\Zeke\source\repos\RocketGame\RocketGame\ZekeEngine\ZekeEngine\x64\Debug;$(LibraryPath)</LibraryPath>
-    <ReferencePath>C:\Users\Zeke\source\repos\RocketGame\RocketGame\ZekeEngine\ZekeEngine\x64\Debug;$(ReferencePath)</ReferencePath>
+    <LibraryPath>C:\Users\Zeke\source\repos\RocketGame\RocketGame\ZekeEngine\ZekeEngine\x64\Debug;C:\Users\Zeke\git\RocketGame\RocketGame\ZekeEngine\ZekeEngine\exlib;$(LibraryPath);$(ProjectDir)/DirectXTK/Bin/Desktop_2015_Win10/x64/Debug</LibraryPath>
+    <ReferencePath>$(VC_ReferencesPath_x64)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -109,13 +109,15 @@
       <PreprocessorDefinitions>_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalIncludeDirectories>C:\boost_1_69_0\include\boost-1_69;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>DirectXTK.lib;Xinput.lib;BulletCollision_Debug.lib;BulletDynamics_Debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>DirectXTK.lib;Xinput.lib;BulletCollision_Debug.lib;BulletDynamics_Debug.lib;LinearMath_Debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\boost_1_69_0\stage\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -156,6 +158,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CEngine.h" />
+    <ClInclude Include="debug\OutputConsole.h" />
     <ClInclude Include="EngineStruct.h" />
     <ClInclude Include="gameObject\CTransform.h" />
     <ClInclude Include="gameObject\GameObject.h" />
@@ -189,6 +192,15 @@
     <ClInclude Include="math\kMath.h" />
     <ClInclude Include="math\Matrix.h" />
     <ClInclude Include="math\Vector.h" />
+    <ClInclude Include="physics\CapsuleCollider.h" />
+    <ClInclude Include="physics\CollisionAttr.h" />
+    <ClInclude Include="physics\CSphereCollider.h" />
+    <ClInclude Include="physics\ICollider.h" />
+    <ClInclude Include="physics\MeshCollider.h" />
+    <ClInclude Include="physics\Physics.h" />
+    <ClInclude Include="physics\PhysicsStaticObject.h" />
+    <ClInclude Include="physics\RigitBody.h" />
+    <ClInclude Include="physics\SpriteBoxCollider.h" />
     <ClInclude Include="policy\Noncopyable.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -198,6 +210,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CEngine.cpp" />
+    <ClCompile Include="debug\OutputConsole.cpp" />
     <ClCompile Include="gameObject\CTransform.cpp" />
     <ClCompile Include="gameObject\GameObject.cpp" />
     <ClCompile Include="gameObject\GameObjectManager.cpp" />
@@ -229,6 +242,13 @@
     <ClCompile Include="math\kMath.cpp" />
     <ClCompile Include="math\Matrix.cpp" />
     <ClCompile Include="math\Vector.cpp" />
+    <ClCompile Include="physics\CapsuleCollider.cpp" />
+    <ClCompile Include="physics\CSphereCollider.cpp" />
+    <ClCompile Include="physics\MeshCollider.cpp" />
+    <ClCompile Include="physics\Physics.cpp" />
+    <ClCompile Include="physics\PhysicsStaticObject.cpp" />
+    <ClCompile Include="physics\RigitBody.cpp" />
+    <ClCompile Include="physics\SpriteBoxCollider.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
