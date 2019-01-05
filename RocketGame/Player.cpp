@@ -68,12 +68,13 @@ void Player::Movef() {
 	CQuaternion hRot = CQuaternion::Identity();
 	hRot.SetRotationDeg(m_right, y);
 	m_rot.Multiply(hRot);
-	//Boost
+	//Ž²‚ª•Ï‰»‚·‚é
 	CVector3 forward = m_forward;
-	forward.Normalize();
 	m_rot.Multiply(forward);
+
+	//Boost
 	if (Pad(0).IsPress(enButtonB)) {
-		m_pos += forward *= m_boostParam;
+		m_pos += forward;
 	}
 	//Set
 	m_pos += m_moveSpeed;
