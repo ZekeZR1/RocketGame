@@ -4,7 +4,7 @@
 
 #include "stdafx.h"
 #include "CharacterController.h"
-#include "Physics/CollisionAttr.h"
+#include "../CollisionAttr.h"
 
 
 

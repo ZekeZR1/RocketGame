@@ -149,7 +149,7 @@
     <ClInclude Include="debug\OutputConsole.h">
       <Filter>Source\debug</Filter>
     </ClInclude>
-    <ClInclude Include="character\CharacterController.h">
+    <ClInclude Include="physics\character\CharacterController.h">
       <Filter>Source\physics\character</Filter>
     </ClInclude>
   </ItemGroup>
@@ -327,7 +327,7 @@
     <ClCompile Include="debug\OutputConsole.cpp">
       <Filter>Source\debug</Filter>
     </ClCompile>
-    <ClCompile Include="character\CharacterController.cpp">
+    <ClCompile Include="physics\character\CharacterController.cpp">
       <Filter>Source\physics\character</Filter>
     </ClCompile>
   </ItemGroup>

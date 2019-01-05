@@ -22,9 +22,11 @@ private:
 	CVector3 m_pos = CVector3::Zero();
 	CVector3 m_moveSpeed = CVector3::Zero();
 	CVector3 m_forward;
+	CVector3 m_boostVec;
 	CVector3 m_right;
 	CVector3 m_up;
 	CQuaternion m_rot = CQuaternion::Identity();
 	const float m_frictionParam = -1.0;
-	float m_boostParam = 10.0f;
+	float m_boostParam = 100.0f;
+	CharacterController* m_charaCon;
 };

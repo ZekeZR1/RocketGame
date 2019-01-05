@@ -14,6 +14,7 @@ Player::~Player()
 bool Player::Start() {
 	m_model = NewGO<SkinModelRender>(0, "octane");
 	m_model->Init(L"Assets/modelData/Octane.cmo", nullptr, 0, enFbxUpAxisY);
+	m_pos.y += 50.f;
 	m_model->SetPosition(m_pos);
 	m_model->SetRotation(m_rot);
 
@@ -21,6 +22,8 @@ bool Player::Start() {
 	m_right = MainCamera().GetRight();
 	m_up = MainCamera().GetUp();
 
+	m_charaCon = new CharacterController;
+	m_charaCon->Init(30.0f, 50.0f, m_pos, enFbxUpAxisY);
 	//CQuaternion sRot = m_rot;
 	//sRot.SetRotationDeg(CVector3::AxisY(), 45.f + 180.f);
 	//m_model->SetRotation(sRot);
@@ -72,12 +75,20 @@ void Player::Movef() {
 	CVector3 forward = m_forward;
 	m_rot.Multiply(forward);
 
-	//Boost
+	//TODO : Boost
 	if (Pad(0).IsPress(enButtonB)) {
-		m_pos += forward * m_boostParam;
+		m_boostVec = forward * m_boostParam;
+		m_moveSpeed += m_boostVec;
 	}
+	else {
+		m_boostVec = CVector3::Zero();
+		m_moveSpeed = CVector3::Zero();
+	}
+	//TODO : Jump
+	//Gravity
+	m_moveSpeed.y -= 70.f;
 	//Set
-	m_pos += m_moveSpeed;
+	m_pos = m_charaCon->Execute(1.0f / 30.0f, m_moveSpeed);
 	m_model->SetPosition(m_pos);
 	m_model->SetRotation(m_rot);
 }
