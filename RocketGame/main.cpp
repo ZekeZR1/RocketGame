@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "scene\Game.h"
 
-
+//TODO : エンジンのフォルダの階層おかしくね？
 int WINAPI wWinMain(
 	HINSTANCE hInstance,
 	HINSTANCE hPrevInstance,

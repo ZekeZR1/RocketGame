@@ -14,11 +14,12 @@ namespace ZekeEngine {
 	/*!
 	*@brief	スキンモデルクラス。
 	*/
-	class SkinModel
+	class SkinModel : Noncopyable
 	{
 	public:
 		//メッシュが見つかったときのコールバック関数。
 		using OnFindMesh = std::function<void(const std::unique_ptr<DirectX::ModelMeshPart>&)>;
+		explicit SkinModel() {}
 		/*!
 		*@brief	デストラクタ。
 		*/
