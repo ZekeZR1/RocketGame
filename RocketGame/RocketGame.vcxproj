@@ -143,6 +143,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="save\SaveSystem.cpp" />
     <ClCompile Include="scene\Game.cpp" />
+    <ClCompile Include="SoccerBall.cpp" />
     <ClCompile Include="Stage.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +153,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="save\SaveSystem.h" />
     <ClInclude Include="scene\Game.h" />
+    <ClInclude Include="SoccerBall.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
@@ -165,6 +167,7 @@
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\Octane.FBX" />
+    <MeshContentTask Include="Assets\modelData\SoccerBall.FBX" />
     <MeshContentTask Include="Assets\modelData\Stage.FBX" />
     <MeshContentTask Include="Assets\modelData\Tofu.FBX" />
   </ItemGroup>

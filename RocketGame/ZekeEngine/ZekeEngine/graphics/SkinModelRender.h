@@ -32,6 +32,12 @@ namespace ZekeEngine {
 			return m_animation.IsPlaying();
 		}
 
+		void SetPRS(CVector3 pos, CQuaternion rot, CVector3 sca) {
+			m_pos = pos;
+			m_rot = rot;
+			m_scale = sca;
+		}
+
 		/*!
 			*@brief	ç¿ïWÇê›íËÅB
 			*/

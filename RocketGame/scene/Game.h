@@ -2,6 +2,8 @@
 #include "GameCamera.h"
 class Player;
 class Stage;
+class SoccerBall;
+
 class Game : public GameObject
 {
 public:
@@ -18,5 +20,6 @@ private:
 	GameCamera* m_gameCamera;
 	Player* m_player = nullptr;
 	Stage* m_stage = nullptr;
+	SoccerBall* m_ball = nullptr;
 };
 
