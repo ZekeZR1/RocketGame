@@ -23,7 +23,9 @@ bool Player::Start() {
 	m_up = MainCamera().GetUp();
 
 	m_charaCon = new CharacterController;
-	m_charaCon->Init(30.0f, 50.0f, m_pos, enFbxUpAxisY);
+	CVector3 initPos = m_pos;
+	initPos.y -= 50.f;
+	m_charaCon->Init(100.0f, 300.0f, initPos, enFbxUpAxisY);
 	//CQuaternion sRot = m_rot;
 	//sRot.SetRotationDeg(CVector3::AxisY(), 45.f + 180.f);
 	//m_model->SetRotation(sRot);
@@ -46,8 +48,11 @@ void Player::Update() {
 }
 
 void Player::Movef() {
-	float MOVE_SPEED = 50.f;
+	//TODO : implement virtual button
+	float MOVE_SPEED = 500.f;
 	static float MOVE_SPEED_JUMP = 30.0f;
+	static float JUMP_SPEED = 630.0f;
+	static float ROTATION_SPEED = 2.0f;
 	//float minSpeed = 1.3f;
 	float minSpeed = 0.f;
 	float x = Pad(0).GetLStickXF();
@@ -58,35 +63,59 @@ void Player::Movef() {
 	//‘OŽ²‰ñ“]
 	CQuaternion uRot = CQuaternion::Identity();
 	CQuaternion fRot = CQuaternion::Identity();
-	if (Pad(0).IsPress(enButtonRB1)) {
-		fRot.SetRotationDeg(m_forward, (-x));
-		m_rot.Multiply(fRot);
+	CVector3 lforward;
+	if (!m_charaCon->IsOnGround()) {
+		if (Pad(0).IsPress(enButtonRB1)) {
+			fRot.SetRotationDeg(m_forward, (-x * ROTATION_SPEED));
+			m_rot.Multiply(fRot);
+		}
+		else {
+			//ãŽ²‰ñ“]
+			uRot.SetRotationDeg(m_up, x * ROTATION_SPEED);
+			m_rot.Multiply(uRot);
+		}
+		//‰¡Ž²‰ñ“] Holizontal Axis
+		CQuaternion hRot = CQuaternion::Identity();
+		hRot.SetRotationDeg(m_right, y * ROTATION_SPEED);
+		m_rot.Multiply(hRot);
+	}
+	uRot.SetRotationDeg(m_up, x * ROTATION_SPEED);
+	m_rot.Multiply(uRot);
+	//Ž²‚ª•Ï‰»‚·‚é
+	lforward = m_forward;
+	m_rot.Multiply(lforward);
+	CVector3 accVec = lforward;
+	accVec.Normalize();
+	accVec.y = 0;
+	accVec *= r * MOVE_SPEED * GameTime().GetFrameDeltaTime();
+	m_moveSpeed += accVec;
+	//–€ŽC‚ðŒvŽZ‚·‚é
+	if (Pad(0).IsPress(enButtonRB1) && m_charaCon->IsOnGround()) {
+		m_frictionParam = -0.3f;
 	}
 	else {
-		//ãŽ²‰ñ“]
-		uRot.SetRotationDeg(m_up, x);
-		m_rot.Multiply(uRot);
+		m_frictionParam = -1.f;
 	}
-	//‰¡Ž²‰ñ“] Holizontal Axis
-	CQuaternion hRot = CQuaternion::Identity();
-	hRot.SetRotationDeg(m_right, y);
-	m_rot.Multiply(hRot);
-	//Ž²‚ª•Ï‰»‚·‚é
-	CVector3 forward = m_forward;
-	m_rot.Multiply(forward);
-
+	CVector3 friction = m_moveSpeed;
+	friction *= m_frictionParam;
+	//‰Á‘¬ƒxƒNƒgƒ‹‚Ìxz¬•ª‚É–€ŽC‚ð‰ÁŽZ‚·‚é
+	m_moveSpeed.x +=  friction.x * GameTime().GetFrameDeltaTime();
+	m_moveSpeed.z +=  friction.z * GameTime().GetFrameDeltaTime();
 	//TODO : Boost
 	if (Pad(0).IsPress(enButtonB)) {
-		m_boostVec = forward * m_boostParam;
-		m_moveSpeed += m_boostVec;
+		m_boostVec = lforward * m_boostParam;
 	}
 	else {
 		m_boostVec = CVector3::Zero();
-		m_moveSpeed = CVector3::Zero();
 	}
+	m_moveSpeed += m_boostVec;
 	//TODO : Jump
+	if (Pad(0).IsTrigger(enButtonA)) {
+		m_moveSpeed.y = JUMP_SPEED;
+	}
+	//Collider
 	//Gravity
-	m_moveSpeed.y -= 70.f;
+	m_moveSpeed.y -= m_gravityParam;
 	//Set
 	m_pos = m_charaCon->Execute(1.0f / 30.0f, m_moveSpeed);
 	m_model->SetPosition(m_pos);

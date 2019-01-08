@@ -52,6 +52,9 @@
     <ClCompile Include="save\SaveSystem.cpp">
       <Filter>ソース ファイル\save</Filter>
     </ClCompile>
+    <ClCompile Include="SoccerBall.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -78,6 +81,9 @@
     <ClInclude Include="save\SaveSystem.h">
       <Filter>ソース ファイル\save</Filter>
     </ClInclude>
+    <ClInclude Include="SoccerBall.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ImageContentTask Include="Assets\sprite\test.png">
@@ -92,6 +98,9 @@
       <Filter>Assets\modelData</Filter>
     </MeshContentTask>
     <MeshContentTask Include="Assets\modelData\Octane.FBX">
+      <Filter>Assets\modelData</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\SoccerBall.FBX">
       <Filter>Assets\modelData</Filter>
     </MeshContentTask>
   </ItemGroup>

@@ -4,6 +4,7 @@
 #include "Game.h"
 #include "GameCamera.h"
 #include "../menu/CPause.h"
+#include "../SoccerBall.h"
 
 Game::Game()
 {
@@ -17,6 +18,7 @@ Game::~Game()
 bool Game::Start() {
 	m_player = NewGO<Player>(0,"Player");
 	m_stage = NewGO<Stage>(0, "Stage");
+	m_ball = NewGO<SoccerBall>(0, "Ball");
 	m_gameCamera = NewGO<GameCamera>(0, "GameCamera");
 	return true;
 }

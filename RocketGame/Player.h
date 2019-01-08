@@ -26,7 +26,8 @@ private:
 	CVector3 m_right;
 	CVector3 m_up;
 	CQuaternion m_rot = CQuaternion::Identity();
-	const float m_frictionParam = -1.0;
-	float m_boostParam = 100.0f;
+	float m_frictionParam = -1.0;
+	float m_boostParam = 50.0f;
+	const float m_gravityParam = 20.f;
 	CharacterController* m_charaCon;
 };
