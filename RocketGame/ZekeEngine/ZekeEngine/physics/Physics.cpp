@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "PhysicsDebugDraw.h"
 #include "RigitBody.h"
 #include "Physics.h"
 
@@ -44,12 +45,22 @@ void PhysicsWorld::Init()
 	);
 
 	dynamicWorld->setGravity(btVector3(0, -10, 0));
+
+	//m_debugDraw.Init();
+	//dynamicWorld->setDebugDrawer(&m_debugDraw);
 }
 void PhysicsWorld::Update()
 {
 	//TODO : ‰Â•Ï‚É‚·‚éH
 	dynamicWorld->stepSimulation(1.0f / 60.0f);
 }
+
+void PhysicsWorld::DebubDrawWorld() {
+	//m_debugDraw.BeginDraw();
+	//dynamicWorld->debugDrawWorld();
+	//m_debugDraw.EndDraw();
+}
+
 void PhysicsWorld::AddRigidBody(RigidBody& rb)
 {
 	dynamicWorld->addRigidBody(rb.GetBody());

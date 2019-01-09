@@ -33,7 +33,7 @@ namespace ZekeEngine {
 		/*!
 		*@brief	描画。
 		*/
-		void Draw();
+		void Draw(int numVertex, Shader& vsShader, Shader& psShader);
 	private:
 		CVertexBuffer			m_vertexBuffer;		//!<頂点バッファ。
 		CIndexBuffer			m_indexBuffer;		//!<インデックスバッファ。
