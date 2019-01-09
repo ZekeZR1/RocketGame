@@ -23,9 +23,7 @@ bool Player::Start() {
 	m_up = MainCamera().GetUp();
 
 	m_charaCon = new CharacterController;
-	CVector3 initPos = m_pos;
-	initPos.y -= 50.f;
-	m_charaCon->Init(100.0f, 300.0f, initPos, enFbxUpAxisY);
+	m_charaCon->Init(50.0f, 50.0f, m_pos, enFbxUpAxisY);
 	//CQuaternion sRot = m_rot;
 	//sRot.SetRotationDeg(CVector3::AxisY(), 45.f + 180.f);
 	//m_model->SetRotation(sRot);
@@ -49,10 +47,10 @@ void Player::Update() {
 
 void Player::Movef() {
 	//TODO : implement virtual button
-	float MOVE_SPEED = 500.f;
-	static float MOVE_SPEED_JUMP = 30.0f;
-	static float JUMP_SPEED = 630.0f;
-	static float ROTATION_SPEED = 2.0f;
+	float MOVE_SPEED = 300.f * GameTime().GetFrameDeltaTime();
+	static float MOVE_SPEED_JUMP = 900.0f * GameTime().GetFrameDeltaTime();
+	static float JUMP_SPEED = 7000.f  * GameTime().GetFrameDeltaTime();
+	static float ROTATION_SPEED = 60.0f * GameTime().GetFrameDeltaTime();
 	//float minSpeed = 1.3f;
 	float minSpeed = 0.f;
 	float x = Pad(0).GetLStickXF();
@@ -79,7 +77,9 @@ void Player::Movef() {
 		hRot.SetRotationDeg(m_right, y * ROTATION_SPEED);
 		m_rot.Multiply(hRot);
 	}
-	uRot.SetRotationDeg(m_up, x * ROTATION_SPEED);
+	if (!Pad(0).IsPress(enButtonRB1)) {
+		uRot.SetRotationDeg(m_up, x * ROTATION_SPEED);
+	}
 	m_rot.Multiply(uRot);
 	//Ž²‚ª•Ï‰»‚·‚é
 	lforward = m_forward;
@@ -87,7 +87,7 @@ void Player::Movef() {
 	CVector3 accVec = lforward;
 	accVec.Normalize();
 	accVec.y = 0;
-	accVec *= r * MOVE_SPEED * GameTime().GetFrameDeltaTime();
+	accVec *= r * MOVE_SPEED;
 	m_moveSpeed += accVec;
 	//–€ŽC‚ðŒvŽZ‚·‚é
 	if (Pad(0).IsPress(enButtonRB1) && m_charaCon->IsOnGround()) {
@@ -103,7 +103,7 @@ void Player::Movef() {
 	m_moveSpeed.z +=  friction.z * GameTime().GetFrameDeltaTime();
 	//TODO : Boost
 	if (Pad(0).IsPress(enButtonB)) {
-		m_boostVec = lforward * m_boostParam;
+		m_boostVec = lforward * m_boostParam * GameTime().GetFrameDeltaTime();
 	}
 	else {
 		m_boostVec = CVector3::Zero();
@@ -115,9 +115,9 @@ void Player::Movef() {
 	}
 	//Collider
 	//Gravity
-	m_moveSpeed.y -= m_gravityParam;
+	m_moveSpeed.y -= m_gravityParam * GameTime().GetFrameDeltaTime();
 	//Set
-	m_pos = m_charaCon->Execute(1.0f / 30.0f, m_moveSpeed);
+	m_pos = m_charaCon->Execute(GameTime().GetFrameDeltaTime(), m_moveSpeed);
 	m_model->SetPosition(m_pos);
 	m_model->SetRotation(m_rot);
 }

@@ -1,4 +1,6 @@
 #pragma once
+#include "PhysicsDebugDraw.h"
+
 namespace ZekeEngine {
 
 	class RigidBody;
@@ -9,10 +11,12 @@ namespace ZekeEngine {
 		btBroadphaseInterface* overlappingPairCache = nullptr;
 		btSequentialImpulseConstraintSolver* constraintSolver = nullptr;
 		btDiscreteDynamicsWorld*	 dynamicWorld = nullptr;
+//		CPhysicsDebugDraw									 m_debugDraw;
 	public:
 		~PhysicsWorld();
 		void Init();
 		void Update();
+		void DebubDrawWorld();
 		void Release();
 		/*!
 		* @brief	ダイナミックワールドを取得。

@@ -37,13 +37,11 @@ bool CPrimitive::Create(
 
 	return true;
 }
-void CPrimitive::Draw()
+void CPrimitive::Draw(int numVertex ,Shader& vsShader, Shader& psShader)
 {
-	//頂点バッファを設定。
-	//IASetVertexBuffer(m_vertexBuffer);
-	//IASetIndexBuffer(m_indexBuffer);
-	//プリミティブのトポロジーを設定。
-	//IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
-	//描画。
+	UINT stride = m_vertexBuffer.GetStride();
+	GraphicsEngine().GetD3DDeviceContext()->IASetVertexBuffers(0, 1, &m_vertexBuffer.GetBody(), &stride, 0);
+	GraphicsEngine().GetD3DDeviceContext()->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 	//DrawIndexed(m_indexBuffer.GetNumIndex(), 0, 0);
+	GraphicsEngine().GetD3DDeviceContext()->Draw(numVertex, 0);
 }
