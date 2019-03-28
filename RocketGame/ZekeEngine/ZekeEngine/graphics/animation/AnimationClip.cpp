@@ -21,7 +21,8 @@ namespace ZekeEngine {
 		if (fp == nullptr) {
 #ifdef _DEBUG
 			//ファイルが開けなかったときの処理。
-			MessageBox(NULL, (L"AnimationClip::Load, ファイルのオープンに失敗しました。%ls\n", filePath), L"Error", MB_OK);
+
+			MessageBoxW(NULL, ("faild open animation clip %s",filePath), L"Error", MB_OK);
 			//止める。
 			std::abort();
 #endif

@@ -3,21 +3,38 @@
 
 //TODO :　メモリリークチェックする
 
-#include "GameObject.h"
 #include "../util/Util.h"
 #include "CTransform.h"
+#include "GameObject.h"
+#include "../graphics/ShadowMap.h"
+#include "../graphics/postEffect/Bloom.h"
+#include "../graphics/postEffect/PostEffect.h"
+
 
 namespace ZekeEngine {
+
+	class CTransform;
+
 	class GameObjectManager : Noncopyable
 	{
 	private:
 		GameObjectManager() :
 			m_gameObjectPriorityMax(0)
-		{}
-		~GameObjectManager() {}
+		{
+		}
+		~GameObjectManager() {
+			m_mainRenderTarget.ReleaseRenderTarget();
+			if (m_frameBufferRenderTargetView != nullptr) {
+				m_frameBufferRenderTargetView->Release();
+			}
+			if (m_frameBufferDepthStencilView != nullptr) {
+				m_frameBufferDepthStencilView->Release();
+			}
+			m_shadowMap.ClearShadowCasters();
+		}
 		/*!
-			*@brief	ゲームオブジェクトの名前キーを作成。
-			*/
+		*@brief	ゲームオブジェクトの名前キーを作成。
+		*/
 		static unsigned int MakeGameObjectNameKey(const char* objectName)
 		{
 			static const unsigned int defaultNameKey = CUtil::MakeHash("Undefined");	//名前キー。
@@ -31,9 +48,20 @@ namespace ZekeEngine {
 			return hash;
 		}
 	public:
+		void AddShadowCaster(SkinModel* model) {
+			m_shadowMap.RegistShadowCaster(model);
+			//m_shadowCaster = model;
+		}
+		void ClearShadowCasters() {
+			m_shadowMap.ClearShadowCasters();
+		}
+
+		void ClearACaster(SkinModel* casterModel) {
+			m_shadowMap.ClearACaster(casterModel);
+		}
 		/*!
-	 *@brief	インスタンスの取得。
-	 */
+		*@brief	インスタンスの取得。
+		*/
 		static GameObjectManager& Instance()
 		{
 			static GameObjectManager instance;
@@ -44,9 +72,9 @@ namespace ZekeEngine {
 		*/
 		void Execute();
 		/*!
-		 *@brief	初期化。
-		 *@param[in]	gameObjectPrioMax	ゲームオブジェクトの優先度の最大値。(255まで)
-		 */
+		*@brief	初期化。
+		*@param[in]	gameObjectPrioMax	ゲームオブジェクトの優先度の最大値。(255まで)
+		*/
 		void Init(int gameObjectPrioMax);
 		/*!
 		*@brief	ゲームオブジェクトの追加。
@@ -74,13 +102,13 @@ namespace ZekeEngine {
 			}
 		}
 		/*!
-		 *@brief	ゲームオブジェクトのnew
-		 *@details
-		 * この関数を使用してnewしたオブジェクトは必ずDeleteGameObjectを実行することでdeleteされます。
-		 *@param[in]	prio		実行優先順位。
-		 *@param[in]	objectName	オブジェクト名。
-		 *@param[in]	ctorArgs	コンストラクタに渡す可変長引数。
-		 */
+		*@brief	ゲームオブジェクトのnew
+		*@details
+		* この関数を使用してnewしたオブジェクトは必ずDeleteGameObjectを実行することでdeleteされます。
+		*@param[in]	prio		実行優先順位。
+		*@param[in]	objectName	オブジェクト名。
+		*@param[in]	ctorArgs	コンストラクタに渡す可変長引数。
+		*/
 		template<class T, class... TArgs>
 		T* NewGameObject(GameObjectPrio prio, const char* objectName, TArgs... ctorArgs)
 		{
@@ -97,8 +125,8 @@ namespace ZekeEngine {
 			return newObject;
 		}
 		/*!
-		 *@brief	ゲームオブジェクトの削除。
-		 */
+		*@brief	ゲームオブジェクトの削除。
+		*/
 		void DeleteGameObject(GameObject* gameObject)
 		{
 			if (gameObject != nullptr
@@ -171,17 +199,33 @@ namespace ZekeEngine {
 			}
 
 		}
+		ShadowMap* GetShadowMap() {
+			return &m_shadowMap;
+		}
 	private:
 		/*!
-			 *@brief	ゲームオブジェクトの削除を実行。
-			 */
+		*@brief	ゲームオブジェクトの削除を実行。
+		*/
 		void ExecuteDeleteGameObjects();
 		/*!
 		*@brief	シーングラフの更新。
 		*/
 		void UpdateSceneGraph();
+	public:
+		RenderTarget * GetMainRenderTarget() {
+			return &m_mainRenderTarget;
+		}
 
 	private:
+		ShadowMap m_shadowMap;					//シャドウマップ。
+		RenderTarget m_mainRenderTarget;		//メインレンダリングターゲット。
+		PostEffect m_postEffect;				//ポストエフェクト。
+		Sprite m_copyMainRtToFrameBufferSprite;			//メインレンダリングターゲットに描かれた絵をフレームバッファにコピーするためのスプライト。
+		D3D11_VIEWPORT m_frameBufferViewports;			//フレームバッファのビューポート。
+		ID3D11RenderTargetView* m_frameBufferRenderTargetView = nullptr;	//フレームバッファのレンダリングターゲットビュー。
+		ID3D11DepthStencilView* m_frameBufferDepthStencilView = nullptr;	//フレームバッファのデプスステンシルビュー。
+																			//std::vector<SkinModel*> m_shadowCasters;
+		SkinModel* m_shadowCaster = nullptr;
 		CTransform m_transform;												//!<Transform。
 		typedef std::list<GameObject*>	GameObjectList;
 		std::vector<GameObjectList>	m_gameObjectListArray;					//!<ゲームオブジェクトの優先度付きリスト。
@@ -199,34 +243,34 @@ namespace ZekeEngine {
 	}
 
 	/*!
-	 *@brief	ゲームオブジェクト生成のヘルパー関数。
-	 *@param[in]	priority	プライオリティ。
-	 *@param[in]	objectName	オブジェクト名。(NULLの指定可）
-	 *@param[in]	ctorArgs	コンストラクタに渡す可変長引数。
-	 */
+	*@brief	ゲームオブジェクト生成のヘルパー関数。
+	*@param[in]	priority	プライオリティ。
+	*@param[in]	objectName	オブジェクト名。(NULLの指定可）
+	*@param[in]	ctorArgs	コンストラクタに渡す可変長引数。
+	*/
 	template<class T, class... TArgs>
-	static inline T* NewGO(int priority, const char* objectName, TArgs... ctorArgs)
+	static inline T* NewGO(int priority, const char* objectName = nullptr, TArgs... ctorArgs)
 	{
 		return IGameObjectManager().NewGameObject<T>((GameObjectPrio)priority, objectName, ctorArgs...);
 	}
 
 
 	/*!
-		 *@brief	ゲームオブジェクト削除のヘルパー関数。
-		 * NewGOを使用して作成したオブジェクトは必ずDeleteGOを実行するように。
-		 *@param[in]	go		削除するゲームオブジェクト。
-		 */
+	*@brief	ゲームオブジェクト削除のヘルパー関数。
+	* NewGOを使用して作成したオブジェクトは必ずDeleteGOを実行するように。
+	*@param[in]	go		削除するゲームオブジェクト。
+	*/
 	static inline void DeleteGO(GameObject* go)
 	{
 		IGameObjectManager().DeleteGameObject(go);
 	}
 
 	/*!
-		 *@brief	ゲームオブジェクトの追加のヘルパー関数。
-		 *@param[in]	go			追加するゲームオブジェクト。
-		 *@param[in]	priority	プライオリティ。
-		 *@param[in]	objectName	ゲームオブジェクトの名前。
-		 */
+	*@brief	ゲームオブジェクトの追加のヘルパー関数。
+	*@param[in]	go			追加するゲームオブジェクト。
+	*@param[in]	priority	プライオリティ。
+	*@param[in]	objectName	ゲームオブジェクトの名前。
+	*/
 	static inline void AddGO(int priority, GameObject* go, const char* objectName = nullptr)
 	{
 		IGameObjectManager().AddGameObject(static_cast<GameObjectPrio>(priority), go, objectName);

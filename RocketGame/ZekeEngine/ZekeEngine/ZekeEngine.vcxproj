@@ -30,7 +30,7 @@
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
@@ -43,7 +43,7 @@
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
@@ -158,7 +158,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CEngine.h" />
-    <ClInclude Include="debug\OutputConsole.h" />
     <ClInclude Include="EngineStruct.h" />
     <ClInclude Include="gameObject\CTransform.h" />
     <ClInclude Include="gameObject\GameObject.h" />
@@ -167,22 +166,40 @@
     <ClInclude Include="graphics\animation\AnimationClip.h" />
     <ClInclude Include="graphics\animation\AnimationPlayController.h" />
     <ClInclude Include="graphics\Camera.h" />
+    <ClInclude Include="graphics\CCameraCollisionSlover.h" />
     <ClInclude Include="graphics\CConstantBuffer.h" />
     <ClInclude Include="graphics\CGraphicsEngine.h" />
     <ClInclude Include="graphics\CIndexBuffer.h" />
     <ClInclude Include="graphics\CPrimitive.h" />
+    <ClInclude Include="graphics\CSamplerState.h" />
+    <ClInclude Include="graphics\CShader.h" />
+    <ClInclude Include="graphics\CShaderResource.h" />
     <ClInclude Include="graphics\CUnorderedAccessView.h" />
     <ClInclude Include="graphics\CVertexBuffer.h" />
+    <ClInclude Include="graphics\Effect\CEffect.h" />
+    <ClInclude Include="graphics\Effect\CEffectEngine.h" />
+    <ClInclude Include="graphics\font\CFONT.h" />
+    <ClInclude Include="graphics\font\FontRender.h" />
     <ClInclude Include="graphics\GPUBuffer\CGPUBuffer.h" />
+    <ClInclude Include="graphics\GPUBuffer\ConstantBufferGPU.h" />
+    <ClInclude Include="graphics\postEffect\Bloom.h" />
+    <ClInclude Include="graphics\postEffect\Dof.h" />
+    <ClInclude Include="graphics\postEffect\GaussianBlur.h" />
+    <ClInclude Include="graphics\postEffect\PostEffect.h" />
+    <ClInclude Include="graphics\Primitive.h" />
+    <ClInclude Include="graphics\RenderTarget.h" />
     <ClInclude Include="graphics\Shader.h" />
     <ClInclude Include="graphics\ShaderResouceView.h" />
     <ClInclude Include="graphics\ShaderResources.h" />
+    <ClInclude Include="graphics\ShadowMap.h" />
     <ClInclude Include="graphics\Skeleton.h" />
     <ClInclude Include="graphics\SkinModel.h" />
     <ClInclude Include="graphics\SkinModelDataManager.h" />
+    <ClInclude Include="graphics\SkinModelDummy.h" />
     <ClInclude Include="graphics\SkinModelEffect.h" />
     <ClInclude Include="graphics\SkinModelRender.h" />
     <ClInclude Include="graphics\SkinModelShaderConst.h" />
+    <ClInclude Include="graphics\SpringCamera.h" />
     <ClInclude Include="graphics\Sprite\Effect.h" />
     <ClInclude Include="graphics\Sprite\SpBuffer.h" />
     <ClInclude Include="graphics\Sprite\Sprite.h" />
@@ -205,6 +222,8 @@
     <ClInclude Include="physics\SpriteBoxCollider.h" />
     <ClInclude Include="policy\Noncopyable.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="sound\CSound.h" />
+    <ClInclude Include="sound\SoundEngine.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="time\GameTime.h" />
@@ -212,7 +231,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CEngine.cpp" />
-    <ClCompile Include="debug\OutputConsole.cpp" />
     <ClCompile Include="gameObject\CTransform.cpp" />
     <ClCompile Include="gameObject\GameObject.cpp" />
     <ClCompile Include="gameObject\GameObjectManager.cpp" />
@@ -220,21 +238,39 @@
     <ClCompile Include="graphics\animation\AnimationClip.cpp" />
     <ClCompile Include="graphics\animation\AnimationPlayController.cpp" />
     <ClCompile Include="graphics\Camera.cpp" />
+    <ClCompile Include="graphics\CCameraCollisionSlover.cpp" />
     <ClCompile Include="graphics\CConstantBuffer.cpp" />
     <ClCompile Include="graphics\CGraphicsEngine.cpp" />
     <ClCompile Include="graphics\CIndexBuffer.cpp" />
     <ClCompile Include="graphics\CPrimitive.cpp" />
+    <ClCompile Include="graphics\CSamplerState.cpp" />
+    <ClCompile Include="graphics\CShader.cpp" />
+    <ClCompile Include="graphics\CShaderResource.cpp" />
     <ClCompile Include="graphics\CUnorderedAccessView.cpp" />
     <ClCompile Include="graphics\CVertexBuffer.cpp" />
+    <ClCompile Include="graphics\Effect\CEffect.cpp" />
+    <ClCompile Include="graphics\Effect\CEffectEngine.cpp" />
+    <ClCompile Include="graphics\font\CFONT.cpp" />
+    <ClCompile Include="graphics\font\FontRender.cpp" />
     <ClCompile Include="graphics\GPUBuffer\CGPUBuffer.cpp" />
+    <ClCompile Include="graphics\GPUBuffer\ConstantBufferGPU.cpp" />
+    <ClCompile Include="graphics\postEffect\Bloom.cpp" />
+    <ClCompile Include="graphics\postEffect\Dof.cpp" />
+    <ClCompile Include="graphics\postEffect\GaussianBlur.cpp" />
+    <ClCompile Include="graphics\postEffect\PostEffect.cpp" />
+    <ClCompile Include="graphics\Primitive.cpp" />
+    <ClCompile Include="graphics\RenderTarget.cpp" />
     <ClCompile Include="graphics\Shader.cpp" />
     <ClCompile Include="graphics\ShaderResouceView.cpp" />
     <ClCompile Include="graphics\ShaderResources.cpp" />
+    <ClCompile Include="graphics\ShadowMap.cpp" />
     <ClCompile Include="graphics\Skeleton.cpp" />
     <ClCompile Include="graphics\SkinModel.cpp" />
     <ClCompile Include="graphics\SkinModelDataManager.cpp" />
+    <ClCompile Include="graphics\SkinModelDummy.cpp" />
     <ClCompile Include="graphics\SkinModelEffect.cpp" />
     <ClCompile Include="graphics\SkinModelRender.cpp" />
+    <ClCompile Include="graphics\SpringCamera.cpp" />
     <ClCompile Include="graphics\Sprite\Effect.cpp" />
     <ClCompile Include="graphics\Sprite\SpBuffer.cpp" />
     <ClCompile Include="graphics\Sprite\Sprite.cpp" />
@@ -253,6 +289,8 @@
     <ClCompile Include="physics\PhysicsStaticObject.cpp" />
     <ClCompile Include="physics\RigitBody.cpp" />
     <ClCompile Include="physics\SpriteBoxCollider.cpp" />
+    <ClCompile Include="sound\CSound.cpp" />
+    <ClCompile Include="sound\SoundEngine.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

@@ -8,11 +8,7 @@ namespace ZekeEngine {
 
 		Sprite();
 		~Sprite();
-
-		void SetMulColor(const CVector4& mulColor)
-		{
-			m_mulColor = mulColor;
-		}
+		void Init(ID3D11ShaderResourceView* srv, float w, float h);
 		/*
 		*@brief	初期化。
 		*@param	texFilePath		テクスチャのファイルパス。
@@ -20,14 +16,6 @@ namespace ZekeEngine {
 		*@param	h				画像の高さ。
 		*/
 		void Init(const wchar_t* texFilePath, float w, float h);
-
-		/*!
-		* @brief	初期化。
-		*@param[in]	tex		テクスチャ。
-		*@param[in]	w		幅。
-		*@param[in]	h		高さ。
-		*/
-		void Init(ShaderResouceView& tex, float w, float h);
 		/*
 		*@brief	更新。
 		*@param[in]	trans		平行移動。
@@ -44,42 +32,49 @@ namespace ZekeEngine {
 		*@brief	描画。
 		*/
 		void Draw();
+		void Draww();
 
+		void ChangeCameraProjMatrix(Camera::EnUpdateProjMatrixFunc cameraMode) {
+			m_cameraMode = cameraMode;
+		}
+
+		void SetMulColor(const CVector4& col) {
+			m_mulCol = col;
+		}
 		struct ConstantBuffer {
-			CMatrix WVP;		//ワールドビュープロジェクション行列。
+			CMatrix WVP;
+			CVector4 mulCol;
 		};
-		ID3D11Buffer*				m_vertexBuffer = NULL;					//頂点バッファ。
-		ID3D11Buffer*				m_indexBuffer = NULL;					//インデックスバッファ。
-		Effect						m_effect;								//エフェクト。気にしなくてよい。
-		ID3D11ShaderResourceView*	m_texture = NULL;						//テクスチャ。
-		ID3D11SamplerState*			m_samplerState = NULL;					//サンプラステート。
-		CVector3					m_position = CVector3::Zero();			//座標。
+		Camera::EnUpdateProjMatrixFunc m_cameraMode = Camera::enUpdateProjMatrixFunc_Ortho;
+		ID3D11Buffer*				m_vertexBuffer = NULL;
+		ID3D11Buffer*				m_indexBuffer = NULL;
+		ID3D11DepthStencilState* m_depthStencilState = NULL;
+		ID3D11DepthStencilState*	spriteRender = NULL;
+		ID3D11RasterizerState*	rspriteRender = NULL;
+
+		Effect						m_effect;
+		ID3D11ShaderResourceView*	m_texture = NULL;
+		ID3D11SamplerState*			m_samplerState = NULL;
+		CVector3					m_position = CVector3::Zero();
 		CQuaternion					m_rotation = CQuaternion::Identity();	//回転
 		CVector3					m_scale = CVector3::One();
 		CMatrix						m_world = CMatrix::Identity();			//ワールド行列。
 		CVector2					m_size = CVector2::Zero();				//画像のサイズ。
 		ID3D11Buffer*				m__cb = nullptr;							//定数バッファ。
+		Shader						m_vs;									//頂点シェーダー。
+		Shader						m_ps;									//ピクセルシェーダー。
+		Shader						m_pss;									//ピクセルシェーダー。
+		CVector4					m_mulCol = CVector4::White;
 	private:
+		void InitCommon(float w, float h);
 		/*!
 		*@brief	定数バッファの初期化。
 		*/
 		void InitConstantBuffer();
+		void InitVertexBuffer(float w, float h);
+		void InitIndexBuffer();
+		void InitSamplerState();
 
-		struct SSpriteCB {
-			CMatrix WVP;		//ワールドビュープロジェクション行列。
-			CVector4 mulColor;	//乗算カラー。
-		};
-		//CVector3				m_position = CVector3::Zero();	//!<座標。
-		//CQuaternion				m_rotation = CQuaternion::Identity();		//!<回転
-		//CVector3				m_scale = CVector3::One();
-		//CMatrix					m_world = CMatrix::Identity();	//!<ワールド行列。
-		Shader					m_ps;							//!<ピクセルシェーダー。
-		Shader					m_vs;							//!<頂点シェーダー。
-		CVector4				m_mulColor = CVector4::White;	//!<乗算カラー。
-		CPrimitive				m_primitive;					//!<プリミティブ。
-		ShaderResouceView*	m_textureSRV = nullptr;			//!<テクスチャ。
-		CConstantBuffer			m_cb;
-
-		//	CVector2				m_size = CVector2::Zero();		//!<サイズ。
+		ID3D11BlendState* pBlendState = NULL;
 	};
 }

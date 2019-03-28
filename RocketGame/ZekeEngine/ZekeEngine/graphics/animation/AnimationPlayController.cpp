@@ -68,10 +68,10 @@ namespace ZekeEngine {
 			}
 			else {
 #ifdef _DEBUG			
-				MessageBox(NULL, L"AnimationPlayController::Update : 存在しないボーンに値を書き込もうとしています。次のような原因が考えられます。\n"
+				MessageBox(NULL, "AnimationPlayController::Update : 存在しないボーンに値を書き込もうとしています。次のような原因が考えられます。\n"
 					"① tkaファイルを出力する時に、選択したルートボーンがスケルトンのルートボーンと異なっている。\n"
 					"② 異なるスケルトンのアニメーションクリップを使っている。\n"
-					"もう一度tkaファイルを出力しなおしてください。", L"error", MB_OK);
+					"もう一度tkaファイルを出力しなおしてください。", "error", MB_OK);
 				std::abort();
 #endif
 			}

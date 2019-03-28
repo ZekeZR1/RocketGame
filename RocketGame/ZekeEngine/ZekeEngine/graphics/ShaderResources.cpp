@@ -194,7 +194,7 @@ bool ShaderResources::Load(
 				static TCHAR errorMessage[10 * 1024];
 				char message[256];
 				sprintf_s(message, "filePath : %s, %s", filePath, (char*)errorBlob->GetBufferPointer());
-				MessageBox(NULL, errorMessage, L"シェーダーコンパイルエラー", MB_OK);
+				MessageBoxW(NULL, errorMessage, L"シェーダーコンパイルエラー", MB_OK);
 			}
 			return false;
 		}

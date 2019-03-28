@@ -39,8 +39,7 @@ namespace ZekeEngine {
 			mat = m;
 		}
 
-
-		/*operator Effekseer::Matrix44() const
+		operator Effekseer::Matrix44() const
 		{
 			Effekseer::Matrix44 eMat = *((Effekseer::Matrix44*)&mat);
 			return eMat;
@@ -65,8 +64,7 @@ namespace ZekeEngine {
 			eMat.Value[3][2] = mat.m[3][2];
 
 			return eMat;
-		}*/
-
+		}
 		const CMatrix& operator*=(const CMatrix& _m)
 		{
 			Mul(*this, _m);
